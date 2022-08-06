@@ -1,3 +1,10 @@
+<?php
+if(!isset($_SESSION)) 
+{session_start(); 
+}
+if (isset($_SESSION['nombre'])) {
+$usernameSesion = $_SESSION['nombre'];}?>
+<!-- head -->
 <!-- head -->
 <?php include('../partes/head.php') ?>
 <!-- fin head -->
@@ -61,7 +68,7 @@
                                 
                                 require_once '../bds/conexion.php';
                                 $query = "SELECT F.form_clave,U.usuario_correo, U.usuario_nombre,F.usuario_clave,date_format(F.form_fecha, '%d-%m-%Y') AS fecha_formateada,F.form_hora, F.form_titulo, F.form_descripcion, T.tipo_form_clave,U.tipo_usuario_clave  
-                                FROM formulario F,usuario U, tipo_formulario T,tipo_usuario TU WHERE  F.tipo_form_clave=T.tipo_form_clave AND F.usuario_clave = U.usuario_clave AND U.tipo_usuario_clave=TU.tipo_usuario_clave AND U.tipo_usuario_clave=2 and U.usuario_clave=3 ;";
+                                FROM formulario F,usuario U, tipo_formulario T,tipo_usuario TU WHERE  F.tipo_form_clave=T.tipo_form_clave AND F.usuario_clave = U.usuario_clave AND U.tipo_usuario_clave=TU.tipo_usuario_clave AND U.tipo_usuario_clave=2  ;";
                                 $stmt = $bd->prepare($query);
                                 $stmt->execute();
                             
@@ -140,10 +147,6 @@
         integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous">
     </script>
 
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
-    </script>
-
     <!--jQuery first, then Popper.js, then Bootstrap JS-->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
         integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous">
@@ -151,13 +154,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js"
         integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK" crossorigin="anonymous">
     </script>
-    <!-- Dropdown -->
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
-        integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous">
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
-        integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous">
-    </script>
+    
     <!-- DataTable -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
@@ -182,5 +179,8 @@
 
     <!-- sweetalert2 -->
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="../js/hu4.js"></script>
+    <script src="../js/alerta_agregar.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+        </script>
 </body>

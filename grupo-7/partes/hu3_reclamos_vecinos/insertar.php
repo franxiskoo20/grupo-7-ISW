@@ -18,7 +18,6 @@ $destacado = $_POST['destacar'];
 $sentencia = $bd->prepare("INSERT INTO formulario(usuario_clave, tipo_form_clave, form_titulo, form_descripcion, form_fecha, form_hora, form_importancia, form_receptor, form_destacar) VALUES (?,?,?,?,?,?,?,?,?);");
 
 $resultado = $sentencia->execute([$usuario_clave ,$tipo ,$titulo ,$descripcion, $fecha,$hora,$importancia,$usuario,$destacado]);
+
+header('Location: ../../vistas/hu3_reclamos.php');
 ?>
-
-<?php header('Location: ../../vistas/hu3_reclamos.php'); ?>
-

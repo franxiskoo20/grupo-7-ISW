@@ -1,5 +1,4 @@
-<?php 
-	session_start();
+<?php session_start();
 	include_once '../bds/conexion.php';
 	$usuario = $_POST['email'];
 	$contrasena = $_POST['password'];
@@ -7,14 +6,12 @@
 	$sentencia->execute([$usuario, $contrasena]);
 	$datos = $sentencia->fetch(PDO::FETCH_OBJ);
 
-	$sentencia_2 = $bd->prepare('select t.tipo_usuario_nombre
+    $sentencia_2 = $bd->prepare('select t.tipo_usuario_nombre
 								FROM tipo_usuario t, usuario u
 								where u.usuario_correo = ? and u.pass = ?
 								and u.tipo_usuario_clave=t.tipo_usuario_clave;');
 	$sentencia_2->execute([$usuario, $contrasena]);
 	$datos_2 = $sentencia_2->fetch(PDO::FETCH_OBJ);
-	
-	//print_r($datos);
 
 	if ($datos === FALSE) {
 		header('Location: login.php');

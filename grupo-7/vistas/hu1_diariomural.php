@@ -1,8 +1,12 @@
+<?php
+if(!isset($_SESSION)) 
+{session_start(); 
+}
+if (isset($_SESSION['nombre'])) {
+$usernameSesion = $_SESSION['nombre'];}?>
 <!-- head -->
 <?php include('../partes/head.php') ?>
 <!-- fin head -->
-
-
 <!-- mostrar diario mural -->
 <?php include("../controlador/hu1_controlador_diariomural/hu1_mostrar_diariomural.php") ?>
 <!-- fin diario mural -->
@@ -27,7 +31,7 @@
                     <div class="container shadow px-4 py-3 bg-grey rounded-3 ">
                         <div class="row">
                             <h1 class="font-weight-bold mb-0">¡Bienvenido al Diario mural! -
-                                <?php echo $_SESSION['nombre'] ?></h1><br>
+                                <?php echo $usernameSesion ?></h1><br>
                             <h5>Donde podrás compartir información que consideres importante para la comunidad y
                                 revisar todas las publicaciones existentes hasta el momento. </h5>
                             <hr>

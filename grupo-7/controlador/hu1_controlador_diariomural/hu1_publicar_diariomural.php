@@ -13,7 +13,6 @@ $titulo = $_POST["titulo"];
 $descripcion = $_POST["descripcion"];
 $usuario_clave = $_POST["usuario_clave"];
 
-echo $usuario_clave;
 if(!empty($tipo_anuncio && $fecha && $hora  && $titulo && $descripcion) ){
     
     if (isset($_POST['destacar'])){

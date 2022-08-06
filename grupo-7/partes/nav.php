@@ -1,13 +1,9 @@
-<!-- Navbar -->
-<?php session_start();
-	if (!isset($_SESSION['nombre'])) {
-		header('Location: ../login/login.php');
-	}elseif(isset($_SESSION['nombre'])){
-        
-	}else{
-		echo "Error en el sistema";
-	}
-?>
+<?php
+if(!isset($_SESSION)) 
+{session_start(); 
+}
+if (isset($_SESSION['nombre'])) {
+$usernameSesion = $_SESSION['nombre'];}?>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
     <div class="container">
@@ -24,7 +20,7 @@
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <img src="https://previews.123rf.com/images/jemastock/jemastock1609/jemastock160905175/63043795-persona-ejecutiva-en-traje-con-la-ilustraci%C3%B3n-de-vector-de-imagen-de-iconos-de-negocios-relacionados-co.jpg"
                             class="img-fluid rounded-circle avatar mr-2" alt="imagen" />
-                        <?php echo $_SESSION['nombre'] ?>
+                        <?php echo $usernameSesion?>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="../perfil/"><i class="fas fa-user"></i> Mi perfil</a>
