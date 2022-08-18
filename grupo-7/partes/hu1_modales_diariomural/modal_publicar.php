@@ -57,7 +57,7 @@ $fecha = date('Y-m-d');
                     <div class="form-group">
                         <label>Titulo</label>
                         <input type="text"
-                            placeholder="Por favor, elija un titulo para su publicació (5 - 50 caracteres)"
+                            placeholder="Por favor, elija un titulo para su publicación (5 - 50 caracteres)"
                             class="form-control is-invalid" name="titulo" autocomplete="off" minlength="10"
                             maxlength="50" required>
                         <div class="valid-feedback">
@@ -67,7 +67,7 @@ $fecha = date('Y-m-d');
                     <div class="form-group">
                         <label>Descripción</label>
                         <textarea
-                            placeholder="Por favor, escriba una descripción para su publicació (10 - 1000 caracteres)"
+                            placeholder="Por favor, escriba una descripción para su publicación (10 - 1000 caracteres)"
                             rows="10" wrap="hard" class="form-control" name="descripcion" minlength="10"
                             maxlength="1000" required></textarea>
 
