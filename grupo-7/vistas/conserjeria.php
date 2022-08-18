@@ -38,7 +38,7 @@ $usernameSesion = $_SESSION['nombre'];}?>
 
                             <div class="col-lg-2 d-flex justify-content-end my-2">
                                 <a href="" class="btn btn-primary w-100" data-bs-toggle="modal"
-                                    data-bs-target="#agregar">Agregar</a>
+                                    data-bs-target="#agregar"><b>Agregar</b></a>
                             </div>
                         </div>
 

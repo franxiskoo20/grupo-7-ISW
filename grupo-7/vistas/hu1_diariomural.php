@@ -56,7 +56,7 @@ $usernameSesion = $_SESSION['nombre'];}?>
                             <div class="col-lg-12 col-md-12 ">
                                 <table class="table table-hover" id="table_id">
                                     <thead class="bg-primary">
-                                        <tr>
+                                        <tr style="color:white">
                                             <th class="col-lg-3 col-md-2" scope="col">Nombre</th>
                                             <th class="col-lg-2 col-md-1" scope="col">Tipo</th>
                                             <th class="col-lg-2 col-md-1" scope="col">Fecha</th>
@@ -67,8 +67,8 @@ $usernameSesion = $_SESSION['nombre'];}?>
 
                                     <?php if($consultaFormulario): foreach($consultaFormulario as $row): ?>
                                     <tr>
-                                        <td><?php echo "<b>".$row['usuario_nombre']."</b><br>"?>
-                                            <?php echo "<small>"."N° departamento: ".$row['dep_numero']."</small>"?>
+                                        <td><?php echo "<b style='font-weight: bold;'>".$row['usuario_nombre']."</b><br>"?>
+                                            <?php echo "<small>"."N° departamento: ".$row['dep_numero']."</small><br>"?>
                                             <?php echo "<small>".$row['usuario_correo']."</small>"?></td>
                                         <td>
                                             <?php
@@ -97,7 +97,7 @@ $usernameSesion = $_SESSION['nombre'];}?>
 
                                         <td><?php echo $row['fecha_formateada']?></td>
 
-                                        <td><?php echo "<b>".strtoupper($row['form_titulo'])."</b><br>"?>
+                                        <td><?php echo "<b style='font-weight: bold;'>".strtoupper($row['form_titulo'])."</b><br>"?>
                                             <?php echo $row['form_descripcion']?></td>
 
 

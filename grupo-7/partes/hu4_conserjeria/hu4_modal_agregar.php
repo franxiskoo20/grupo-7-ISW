@@ -8,7 +8,7 @@
         </div>
         <div class="modal-body">
           <!-- Formulario Crear nuevo Aviso de Conserjería -->
-          <form class="was-validate" action="../controlador/hu4_conserjeria_controlador/hu4_insert.php" method="POST" name="formulario_publicar" onsubmit="return validar_formulario_publicar()">
+          <form class="was-validated" action="../controlador/hu4_conserjeria_controlador/hu4_insert.php" method="POST" name="formulario_publicar" onsubmit="return validar_formulario_publicar()">
             <div class="row">
                 <div class="col">
                   <div>
