@@ -1,21 +1,22 @@
 <?php
 
+
 //DATOS DE CONEXION A MYSQLI_CONNECT
-/*$db_host = "146.83.194.142";
+$db_host = "146.83.194.142";
 $db_user = "E7software";
 $db_pass = "E7software1128";
 $db_name = "E7software_bd";
-*/
-// SERVIDOR
-$db_host = "localhost";
-$db_user = "id19376874_e7software";
-$db_pass = "8KWE_I@RWtQ9tmkH";
-$db_name = "id19376874_e7software_bd";
+
+// // SERVIDOR
+// $db_host = "localhost";
+// $db_user = "id19376874_e7software";
+// $db_pass = "8KWE_I@RWtQ9tmkH";
+// $db_name = "id19376874_e7software_bd";
 
 // CONEXIÓN CON PDO ($bd)
 try {
     $bd = new PDO(
-        'mysql:host='.$db_host. ';
+        'mysql:host=146.83.194.142;
         dbname='.$db_name,
         $db_user,
         $db_pass,
