@@ -16,8 +16,15 @@
         <a href="../vistas/conserjeria.php" class="d-block text-light p-3 border-0"><i class="fas fa-concierge-bell"></i>
             Conserjeria</a>
 
-        <a href="../vistas/hu3_reclamos.php" class="d-block text-light p-3 border-0"><i class="fas fa-exclamation-triangle"></i>
-            Reclamos </a>
+    <!-- Solo muestra reclamos si ingreso como administrador
+
+        <?php if(isset($_SESSION['nombre']) && $_SESSION['tipo']=="Administrador"){
+            
+            echo '        <a href="../vistas/hu3_reclamos.php" class="d-block text-light p-3 border-0"><i class="fas fa-exclamation-triangle"></i>
+            Reclamos</a>';
+           
+        }?>
+            
 
 
     </div>
