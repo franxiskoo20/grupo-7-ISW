@@ -16,11 +16,15 @@
         <a href="../vistas/conserjeria.php" class="d-block text-light p-3 border-0"><i class="fas fa-concierge-bell"></i>
             Conserjeria</a>
 
-    <!-- Solo muestra reclamos si ingreso como administrador
+        <a href="../vistas/hu3_reclamos.php" class="d-block text-light p-3 border-0"><i class="fas fa-exclamation-triangle"></i>
+            Reclamos</a>
 
-        <?php if(isset($_SESSION['nombre']) && $_SESSION['tipo']=="Administrador"){
+
+    <!-- Solo muestra reclamos si ingreso como administrador -->
+
+    <?php if(isset($_SESSION['nombre']) && $_SESSION['tipo']=="Administrador"){
             
-            echo '        <a href="../vistas/hu3_reclamos.php" class="d-block text-light p-3 border-0"><i class="fas fa-exclamation-triangle"></i>
+            echo '<a href="../vistas/hu3_reclamos.php" class="d-block text-light p-3 border-0"><i class="fas fa-exclamation-triangle"></i>
             Reclamos</a>';
            
         }?>
