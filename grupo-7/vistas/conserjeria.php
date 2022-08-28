@@ -67,8 +67,8 @@ $usernameSesion = $_SESSION['nombre'];}?>
                             <?php
                                 
                                 require_once '../bds/conexion.php';
-                                $query = "SELECT F.form_clave,U.usuario_correo, U.usuario_nombre,F.usuario_clave,date_format(F.form_fecha, '%d-%m-%Y') AS fecha_formateada,F.form_hora, F.form_titulo, F.form_descripcion, T.tipo_form_clave,U.tipo_usuario_clave  
-                                FROM formulario F,usuario U, tipo_formulario T,tipo_usuario TU WHERE  F.tipo_form_clave=T.tipo_form_clave AND F.usuario_clave = U.usuario_clave AND U.tipo_usuario_clave=TU.tipo_usuario_clave AND U.tipo_usuario_clave=2  ;";
+                                $query = "SELECT F.formulario_id,F.formulario_titulo,F.formulario_tipo,date_format(F.formulario_fecha, '%d-%m-%Y') AS fecha_formateada , F.formulario_hora, F.formulario_contenido 
+                                FROM formulario F WHERE  1  ;";
                                 $stmt = $bd->prepare($query);
                                 $stmt->execute();
                             
@@ -80,46 +80,44 @@ $usernameSesion = $_SESSION['nombre'];}?>
                                     extract($row);
                                     
                             ?>
-
                             <!-- Se usa replace para mostrar un salto de linea en PHP y html. -->
                             <?php 
                                             $order = array("\n");
                                             $replace = '<br/>';
-                                            $newdescripcion = str_replace($order,$replace,$form_descripcion);
+                                            $newdescripcion = str_replace($order,$replace,$formulario_contenido);
                                          ?>
                             <tr>
                                 <td><?php echo $contador;?></td>
-                                <td><?php echo $usuario_nombre?><br><?php echo "<small>".$usuario_correo."</small>"?>
+                                <td><?php echo "usuario_nombre";?><br><?php echo "<small>"."usuario_correo"."</small>";?>
                                 </td>
-                                <td><?php echo $form_titulo?></td>
+                                <td><?php echo $formulario_titulo;?></td>
                                 <td><?php
-                                                            if($tipo_form_clave == 6){
+                                                            if($formulario_tipo == "Bitacora"){
                                                                 echo '<span class="badge bg-primary text-white">Bitacora</span>';
-                                                            }else if($tipo_form_clave == 7){
+                                                            }else if($formulario_tipo == "Encomienda"){
                                                                     echo '<span class="badge bg-warning text-dark">Encomienda</span>';
-                                                                }else if($tipo_form_clave == 4){
+                                                                }else if($formulario_tipo == "Otro"){
                                                                         echo '<span class="badge bg-info text-dark">Otro</span>';
                                                                     }
                                                         ?></td>
                                 <td><?php echo $fecha_formateada; ?></td>
-                                <td><?php echo $form_hora; ?></td>
+                                <td><?php echo $formulario_hora; ?></td>
                                 <td><?php echo $newdescripcion; ?></td>
                                 <td>
                                     <a href="javascript:void(0)" class="btn btn-primary"
-                                        onclick="fun('<?php echo $form_clave;?>')"><i
+                                        onclick="fun('<?php echo $formulario_id;?>')"><i
                                             class="fa-regular fa-pen-to-square"></i></a>
                                     <a class="btn btn-primary "
-                                        href="../controlador/hu4_conserjeria_controlador/hu4_delete.php?id=<?php echo $form_clave;?>"><i
+                                        href="../controlador/hu4_conserjeria_controlador/hu4_delete.php?id=<?php echo $formulario_id;?>"><i
                                             class="fa-solid fa-trash-can"></i></a>
                                 </td>
                             </tr>
                             <?php
                                     $contador++;
-                                    	
+                                        
                                   }
                                     
                                 } ?>
-
 
 
                             <!-- Fin bucle -->
@@ -127,6 +125,7 @@ $usernameSesion = $_SESSION['nombre'];}?>
                                 <!-- div para mostrar modal modificar -->
                             </div>
                         </tbody>
+
                     </table>
                     <!-- fin table -->
                 </div>
