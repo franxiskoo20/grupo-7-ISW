@@ -12,8 +12,15 @@
           <h5 class="modal-title" id="staticBackdropLabel">Modificar registro</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-            <?php if($consulta): foreach($consulta as $row): ?>
-            <?php if($_GET['id'] == $row['form_clave']){ ?>
+            <?php 
+                    if($stmt->rowCount() > 0) {
+                        $contador =+1;
+                        
+                        while($row=$stmt->fetch(PDO::FETCH_ASSOC)) {
+                             
+                        extract($row);
+            ?>
+            <?php if($_GET['id'] == $formulario_id){ ?>
             <!-- Formulario Crear nuevo Aviso de Conserjería -->
             <form action="../controlador/hu4_conserjeria_controlador/hu4_edit.php"  method="POST">
                 <div class="modal-body mt-4">
@@ -24,12 +31,12 @@
                             </div>
                         </div>
                         <div class="col"  >
-                            <select class="form-select" name="tipo_form_actualizar" value="<?php echo $row['tipo_form_clave'];?>" required>
+                            <select class="form-select" name="tipo_form_actualizar" value="<?php echo $formulario_tipo ;?>" required>
                             
-                                <option value="0" >Tipo de Registro </option>
-                                <option value="1">Bitacora</option>
-                                <option value="2">Encomienda</option>
-                                <option value="3">Otro</option>
+                                <option value="" >Tipo de Registro </option>
+                                <option value="Bitacora">Bitácora</option>
+                                <option value="Encomienda">Encomienda</option>
+                                <option value="Otro">Otro</option>
                             </select>
                         </div>
                     </div>
@@ -37,16 +44,16 @@
                     <div class="row">
                         <div class="form-group col">
                             <label for="exampleInputPassword1"  class="form-label">Título</label>
-                            <input type="text" placeholder="Entrega de llaves" value="<?php echo $row['form_titulo'];?>" class="form-control" name="titulo_actualizar" required>
+                            <input type="text" placeholder="Entrega de llaves" value="<?php echo $formulario_titulo;?>" class="form-control" name="titulo_actualizar" required>
                         </div> 
                     </div>
                     <br>
                     <div class="row">
                         <div class="col">
-                            <label for="exampleInputPassword1" class="form-label">Fecha antigua: <?php echo $row['fecha_formateada'];?></label>
+                            <label for="exampleInputPassword1" class="form-label">Fecha antigua: <?php echo $fecha_formateada;?></label>
                         </div>
                         <div class="col">
-                            <input type="date" class="form-control" id="datepicker" name="fecha_actualizar" value="<?php echo $row['fecha_formateada'];?>" required>
+                            <input type="date" class="form-control" id="datepicker" name="fecha_actualizar" value="<?php echo $fecha_formateada;?>" required>
                         </div>
                     </div>
                     <br>
@@ -56,7 +63,7 @@
                             <label >Comentario</label>
                         </div>
                         <div class="col-7 campo" >
-                            <textarea class="input-text form-control" name="descripcion_actualizar"  style="height: 135px; width:100%;"><?php echo $row['form_descripcion'];?></textarea>
+                            <textarea class="input-text form-control" name="descripcion_actualizar"  style="height: 135px; width:100%;"><?php echo $row['formulario_contenido'];?></textarea>
                         </div>
                     </div>
                 </div>
@@ -69,9 +76,10 @@
                     </div>
                 </div>
                 <br>
-                <input type="hidden" name="form_clave" value="<?php echo $row['form_clave']; ?>">
-                <?php }?>
-                <?php endforeach; endif ?>
+                <input type="hidden" name="form_clave" value="<?php echo $row['formulario_id']; ?>">
+                <?php }
+                }
+            }?>
           </form>
         </div>
       </div>
