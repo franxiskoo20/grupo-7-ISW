@@ -1,11 +1,11 @@
 <?php
 
 //DATOS DE CONEXION A MYSQLI_CONNECT
-$db_host = "146.83.194.142";
+/* $db_host = "146.83.194.142";
 $db_user = "E7software";
 $db_pass = "E7software1128";
 $db_name = "E7software_bd";
-
+ */
 /*
 // SERVIDOR
 $db_host = "localhost";
@@ -13,6 +13,11 @@ $db_user = "id19376874_e7software";
 $db_pass = "8KWE_I@RWtQ9tmkH";
 $db_name = "id19376874_e7software_bd";
 */
+// SERVIDOR LOCAL
+$db_host = "localhost";
+$db_user = "root";
+$db_pass = "";
+$db_name = "edif";
 // CONEXIÓN CON PDO ($bd)
 try {
     $bd = new PDO(
@@ -28,7 +33,7 @@ try {
 
 
 //CONEXIÓN CON  MYSQLI_CONNECT ($con)
-$con  = mysqli_connect($db_host,$db_user,$db_pass,$db_name);
+/* $con  = mysqli_connect($db_host,$db_user,$db_pass,$db_name);
 
     if(!$con){
 
@@ -37,6 +42,6 @@ $con  = mysqli_connect($db_host,$db_user,$db_pass,$db_name);
     }else{
 
    
-    }
+    } */
 
 ?>
