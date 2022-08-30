@@ -14,7 +14,7 @@
             Dirario mural</a>
 
         <a href="../vistas/conserjeria.php" class="d-block text-light p-3 border-0"><i class="fas fa-concierge-bell"></i>
-            Conserjeria</a>
+            Conserjería</a>
 
         <a href="../vistas/hu3_reclamos.php" class="d-block text-light p-3 border-0"><i class="fas fa-exclamation-triangle"></i>
             Reclamos </a>
