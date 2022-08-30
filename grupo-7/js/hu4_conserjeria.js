@@ -7,7 +7,7 @@ $(function(){
             "lengthMenu": [5, 10, 15, 20, 25],
             "aoColumnDefs": [{
                 'bSortable': false,
-                'aTargets': [7,7],
+                'aTargets': [5,5],
                 
             }],
             "language": {

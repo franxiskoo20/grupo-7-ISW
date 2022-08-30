@@ -63,7 +63,8 @@
                             <label >Comentario</label>
                         </div>
                         <div class="col-7 campo" >
-                            <textarea class="input-text form-control" name="descripcion_actualizar"  style="height: 135px; width:100%;"><?php echo $row['formulario_contenido'];?></textarea>
+                            <textarea class="input-text form-control" name="descripcion_actualizar" rows="18" wrap="hard" minlength="10"
+                            maxlength="1000"  style="height: 135px; width:100%;"><?php echo $formulario_contenido;?></textarea>
                         </div>
                     </div>
                 </div>

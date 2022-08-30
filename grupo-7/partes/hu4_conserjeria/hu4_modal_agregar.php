@@ -18,9 +18,9 @@
                 <div class="col">
                   <select class="form form-control is-invalid" name="tipo" required>
                           <option value="" disabled selected>Tipo de Registro</option>
-                          <option value="6">Bitacora</option>
-                          <option value="7">Encomienda</option>
-                          <option value="4">Otro</option>
+                          <option value="Bitacora">Bitácora</option>
+                          <option value="Encomienda">Encomienda</option>
+                          <option value="Otro">Otro</option>
                   </select>
                   <div class="valid-feedback">
                                 Aceptado.
@@ -49,7 +49,9 @@
               <div class="row">
                   
                   <div class="col w-100 " >
-                  <textarea class="input-text form-control" name="descripcion" placeholder="Ingrese un Comentario" style="height: 135px; width:100%;"></textarea>
+                  <textarea class="input-text form-control" name="descripcion" placeholder="Por favor, escriba un comentario para su aviso (10 - 1000 caracteres)"
+                            rows="18" wrap="hard" name="descripcion" minlength="10"
+                            maxlength="1000" style="height: 135px; width:100%;"></textarea>
                   </div>
               </div>
               <br>

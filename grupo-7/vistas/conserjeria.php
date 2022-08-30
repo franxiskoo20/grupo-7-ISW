@@ -45,33 +45,26 @@ $usernameSesion = $_SESSION['nombre'];}?>
                     </div>
                 </section>
 
-                <div class="container">
+                <div class="container table-responsive">
                     <!-- Listar tabla de avisos -->
                     <table id="table_id" class="table">
                         <!-- Head Tabla -->
                         <thead>
                             <tr class="bg-primary text-light">
-                                <th scope="col-1">#</th>
                                 <th scope="col-1">Nombre</th>
                                 <th scope="col">Título</th>
                                 <th scope="col-1">Tipo</th>
                                 <th scope="col-1">Fecha</th>
-                                <th scope="col-1">Hora</th>
                                 <th scope="col-4">Descripcion</th>
-                                <th scope="col-1">Acción</th>
+                                <th scope="col-2">Acción</th>
                             </tr>
                         </thead>
                         <!-- Body Tabla -->
                         <tbody id="body">
                             <!-- Recorrer fila por cada registro -->
                             <?php
-                                
-                                require_once '../bds/conexion.php';
-                                $query = "SELECT F.formulario_id,F.formulario_titulo,F.formulario_tipo,date_format(F.formulario_fecha, '%d-%m-%Y') AS fecha_formateada , F.formulario_hora, F.formulario_contenido 
-                                FROM formulario F WHERE  1  ;";
-                                $stmt = $bd->prepare($query);
-                                $stmt->execute();
-                            
+                                /* Se llama a Mostrar_aviso que traerá la variable con la consulta */
+                                include '../controlador/hu4_conserjeria_controlador/mostrar_aviso.php';
                                 if($stmt->rowCount() > 0) {
                                     $contador =+1;
                                     
@@ -87,23 +80,22 @@ $usernameSesion = $_SESSION['nombre'];}?>
                                             $newdescripcion = str_replace($order,$replace,$formulario_contenido);
                                          ?>
                             <tr>
-                                <td><?php echo $contador;?></td>
+                                
                                 <td><?php echo "usuario_nombre";?><br><?php echo "<small>"."usuario_correo"."</small>";?>
                                 </td>
                                 <td><?php echo $formulario_titulo;?></td>
                                 <td><?php
                                                             if($formulario_tipo == "Bitacora"){
-                                                                echo '<span class="badge bg-primary text-white">Bitacora</span>';
+                                                                echo '<span class="badge bg-primary text-white">Bitácora</span>';
                                                             }else if($formulario_tipo == "Encomienda"){
                                                                     echo '<span class="badge bg-warning text-dark">Encomienda</span>';
                                                                 }else if($formulario_tipo == "Otro"){
                                                                         echo '<span class="badge bg-info text-dark">Otro</span>';
                                                                     }
                                                         ?></td>
-                                <td><?php echo $fecha_formateada; ?></td>
-                                <td><?php echo $formulario_hora; ?></td>
-                                <td><?php echo $newdescripcion; ?></td>
-                                <td>
+                                <td><?php echo $fecha_formateada; ?><br><?php echo $formulario_hora; ?></td>
+                                <td ><?php echo "<p style='max-width: 380px;'>".$newdescripcion."</p>" ; ?></td>
+                                <td class="">
                                     <a href="javascript:void(0)" class="btn btn-primary"
                                         onclick="fun('<?php echo $formulario_id;?>')"><i
                                             class="fa-regular fa-pen-to-square"></i></a>
