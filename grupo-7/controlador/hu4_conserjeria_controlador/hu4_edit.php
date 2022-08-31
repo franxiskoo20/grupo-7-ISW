@@ -4,19 +4,24 @@ require_once("../../bds/conexion.php");
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
    $form_clave =  $_POST["form_clave"];
-   $tipo_anuncio = $_POST["tipo_form_actualizar"];
-   $fecha = $_POST["fecha_actualizar"];
-   $titulo = $_POST["titulo_actualizar"];
-   $descripcion = $_POST["descripcion_actualizar"];
+   $formulario_tipo = $_POST["tipo_form_actualizar"];
+   $formulario_fecha = $_POST["fecha_actualizar"];
+   $formulario_titulo = $_POST["titulo_actualizar"];
+   $formulario_contenido = $_POST["descripcion_actualizar"];
 
     if(isset($_POST['form_clave'])){
-        if(!empty($tipo_anuncio && $tipo_anuncio!='0')){
-        $modificarPublicacion_avisoSql = "UPDATE `formulario` 
-        SET tipo_form_clave = '$tipo_anuncio', form_titulo = '$titulo',  form_fecha = '$fecha', form_descripcion = '$descripcion'
-        WHERE form_clave = '$form_clave' ";
+        if(!empty($formulario_tipo && $formulario_tipo!='0')){
+        $Sql = "UPDATE `formulario` 
+        SET `formulario_tipo` = :formulario_tipo,`formulario_titulo` = :formulario_titulo, `formulario_fecha` = :formulario_fecha, `formulario_contenido`= :formulario_contenido
+        WHERE formulario_id = '$form_clave' ";
         
-        $modificarPublicacion_aviso = mysqli_query($con,$modificarPublicacion_avisoSql);
-        
+        $editSql = $bd->prepare($Sql);
+        $editSql->bindParam(':formulario_tipo',$formulario_tipo,PDO::PARAM_STR, 45);
+        $editSql->bindParam(':formulario_titulo',$formulario_titulo,PDO::PARAM_STR, 45);
+        $editSql->bindParam(':formulario_fecha',$formulario_fecha,PDO::PARAM_STR);
+        $editSql->bindParam(':formulario_contenido',$formulario_contenido,PDO::PARAM_STR, 500);
+
+        $editSql->execute();
      }else{
         echo "error se ingreso campo vacio";
     }
