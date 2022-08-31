@@ -11,6 +11,8 @@
 		header('Location: login.php');
 
 	}elseif($sentencia->rowCount() == 1){
+		$usuario_id = $datos->usuario_id;
+		$_SESSION['id'] = $usuario_id;
 		$_SESSION['nombre'] = $datos->usuario_nombre;
 		$_SESSION['clave'] = $datos->usuario_clave;
 		$_SESSION['tipo'] = $datos->usuario_tipo;

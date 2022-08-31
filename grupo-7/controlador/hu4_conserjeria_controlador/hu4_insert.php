@@ -1,4 +1,10 @@
 <?php
+if(!isset($_SESSION)) 
+{session_start(); 
+}
+if (isset($_SESSION['id'])) {
+    $usuario_idd = $_SESSION['id'];
+    }
 require_once("../../bds/conexion.php");
 date_default_timezone_set('Chile/Continental');  
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -10,12 +16,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $descripcion = $_POST['descripcion'];
     /* Fin información enviada por el formulario */
     if(!empty($tipo && $titulo )){
-        $insertarSql = "INSERT INTO formulario(formulario_titulo,formulario_tipo, formulario_fecha, formulario_hora, formulario_contenido) 
-        VALUES(:formulario_titulo,:formulario_tipo, :formulario_fecha, :formulario_hora, :formulario_contenido)";
+        $insertarSql = "INSERT INTO formulario(formulario_titulo,formulario_tipo,formulario_remitente_id, formulario_fecha, formulario_hora, formulario_contenido) 
+        VALUES(:formulario_titulo,:formulario_tipo, :formulario_remitente_id, :formulario_fecha, :formulario_hora, :formulario_contenido)";
         
         $insertarSql = $bd->prepare($insertarSql);
         $insertarSql->bindParam(':formulario_titulo',$titulo,PDO::PARAM_STR, 45);
         $insertarSql->bindParam(':formulario_tipo',$tipo,PDO::PARAM_STR, 45);
+        $insertarSql->bindParam(':formulario_remitente_id',$usuario_idd,PDO::PARAM_STR);
         $insertarSql->bindParam(':formulario_fecha',$fecha,PDO::PARAM_STR);
         $insertarSql->bindParam(':formulario_hora',$hora,PDO::PARAM_STR);
         $insertarSql->bindParam(':formulario_contenido',$descripcion,PDO::PARAM_STR, 500);
@@ -23,10 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }else{
         echo "error se ingreso campo vacio";
     }
+    header("Location: ../../vistas/conserjeria.php");
 }  
 
 ?>
-<script>
-    alert('Registro Ingresado Exitosamente!!');
-    window.location.href='../../vistas/conserjeria.php'
-</script>
