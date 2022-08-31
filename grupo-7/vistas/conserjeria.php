@@ -48,19 +48,19 @@ $usuarioTipo = $_SESSION['tipo'];
                     </div>
                 </section>
 
-                <div class="container table-responsive">
+                <div class="container table-responsive text-center">
                     <!-- Listar tabla de avisos -->
                     <table id="table_id" class="table">
                         <!-- Head Tabla -->
                         <thead>
-                            <tr class="bg-primary text-light">
-                                <th scope="col-1">Nombre</th>
-                                <th scope="col">Título</th>
-                                <th scope="col-1">Tipo</th>
-                                <th scope="col-1">Fecha</th>
-                                <th scope="col-4">Descripción</th>
+                            <tr class="bg-primary text-light text-center">
+                                <th class="text-center border-end" scope="col-1">Nombre</th>
+                                <th class="text-center border-end" scope="col">Título</th>
+                                <th class="text-center border-end" scope="col-1">Tipo</th>
+                                <th class="text-center border-end" scope="col-1">Fecha</th>
+                                <th class="text-center border-end" scope="col-4">Descripción</th>
                                 <?php if ($usuarioTipo == 'conserje') {?>
-                                <th scope="col-2">Acción</th>
+                                <th class="text-center" scope="col-2">Acción</th>
                                 <?php }?>
                             </tr>
                         </thead>
@@ -80,51 +80,44 @@ $usuarioTipo = $_SESSION['tipo'];
                             ?>
                             <!-- Se usa replace para mostrar un salto de linea en PHP y html. -->
                             <?php 
-                                            $order = array("\n");
-                                            $replace = '<br/>';
-                                            $newdescripcion = str_replace($order,$replace,$formulario_contenido);
-                                         ?>
+                                    $order = array("\n");
+                                    $replace = '<br/>';
+                                    $newdescripcion = str_replace($order,$replace,$formulario_contenido);
+                            ?>
                             <tr>
-                                
-                                <td><?php echo "usuario_nombre";?><br><?php echo "<small>"."usuario_correo"."</small>";?>
+                                <td><?php echo $usuario_nombre." ".$usuario_apellido;?><br><?php echo "<small>".$usuario_correo."</small>";?>
                                 </td>
                                 <td><?php echo $formulario_titulo;?></td>
-                                <td><?php
-                                                            if($formulario_tipo == "Bitacora"){
-                                                                echo '<span class="badge bg-primary text-white">Bitácora</span>';
-                                                            }else if($formulario_tipo == "Encomienda"){
-                                                                    echo '<span class="badge bg-warning text-dark">Encomienda</span>';
-                                                                }else if($formulario_tipo == "Otro"){
-                                                                        echo '<span class="badge bg-info text-dark">Otro</span>';
-                                                                    }
-                                                        ?></td>
-                                <td><?php echo $fecha_formateada; ?><br><?php echo $formulario_hora; ?></td>
-                                <td ><?php echo "<p style='max-width: 380px;'>".$newdescripcion."</p>" ; ?></td>
-                                <?php if ($usuarioTipo == 'conserje') {?>
-                                <td class="">
-                                    <a href="javascript:void(0)" class="btn btn-primary"
-                                        onclick="fun('<?php echo $formulario_id;?>')"><i
-                                            class="fa-regular fa-pen-to-square"></i></a>
-                                    <a class="btn btn-primary "
-                                        href="../controlador/hu4_conserjeria_controlador/hu4_delete.php?id=<?= $formulario_id;?>"><i
-                                            class="btn-del fa-solid fa-trash-can"></i></a>
+                                <td><?php   if($formulario_tipo == "Bitacora"){
+                                                 echo '<span class="badge bg-primary text-white">Bitácora</span>';
+                                            }else if($formulario_tipo == "Encomienda"){
+                                                        echo '<span class="badge bg-warning text-dark">Encomienda</span>';
+                                                    }else if($formulario_tipo == "Otro"){
+                                                                echo '<span class="badge bg-info text-dark">Otro</span>';
+                                                            }
+                                    ?>
                                 </td>
+                                <td><?php echo $fecha_formateada; ?><br><?php echo $formulario_hora; ?></td>
+                                <td class="text-start" ><?php echo "<p style='max-width: 380px;'>".$newdescripcion."</p>" ; ?></td>
+                                <?php if ($usuarioTipo == 'conserje') {?>
+                                    <td>
+                                            <a href="javascript:void(0)" class="btn btn-primary"
+                                                onclick="fun('<?php echo $formulario_id;?>')"><i
+                                                    class="fa-regular fa-pen-to-square"></i></a>
+                                                    <a class="btn btn-primary " type="submit"
+                                                            href="../controlador/hu4_conserjeria_controlador/hu4_delete.php?id=<?= $formulario_id;?>"><i
+                                                                class="btn-del fa-solid fa-trash-can"></i></a>
+                                           
+                                    </td>
                                 <?php }?>
                             </tr>
-                            <?php
-                                    $contador++;
-                                        
-                                  }
-                                    
+                            <?php  }   
                                 } ?>
-
-
                             <!-- Fin bucle -->
                             <div id="divModal">
                                 <!-- div para mostrar modal modificar -->
                             </div>
                         </tbody>
-
                     </table >
                     <br><br>
                     <?php if (isset($_GET['m'])) : ?>
@@ -180,8 +173,6 @@ $usuarioTipo = $_SESSION['tipo'];
     </script>
 
     <!-- sweetalert2 -->
-    <script src="../js/jquery-3.6.1.min.js"></script>
-    <script src="../js/sweetalert2.all.min.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="../js/alerta_agregar.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
