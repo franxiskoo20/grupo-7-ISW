@@ -32,7 +32,7 @@
                 
                 <div class="form-group col">
                   <label for="exampleInputPassword1"  class="form-label">Titulo</label>
-                  <input type="text" placeholder="Ingrese Título" class="form-control is-invalid" name="titulo"  autocomplete="off" minlength="10"
+                  <input type="text" placeholder="Ingrese Título -(10 - 50 caracteres)" class="form-control is-invalid" name="titulo"  autocomplete="off" minlength="10"
                             maxlength="50" required>
                   <div class="valid-feedback">
                                 Aceptado.
