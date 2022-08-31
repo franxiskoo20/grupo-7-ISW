@@ -3,7 +3,9 @@ if(!isset($_SESSION))
 {session_start(); 
 }
 if (isset($_SESSION['nombre'])) {
-$usernameSesion = $_SESSION['nombre'];}?>
+$usernameSesion = $_SESSION['nombre'];
+$usuarioTipo = $_SESSION['tipo'];
+}?>
 <!-- head -->
 <!-- head -->
 <?php include('../partes/head.php') ?>
@@ -35,11 +37,12 @@ $usernameSesion = $_SESSION['nombre'];}?>
                                 <h7>Si tienes la intención de agregar una publicación al diario mural te invitamos a
                                     presionar el siguiente botón.</h7>
                             </div>
-
-                            <div class="col-lg-2 d-flex justify-content-end my-2">
-                                <a href="" class="btn btn-primary w-100" data-bs-toggle="modal"
-                                    data-bs-target="#agregar"><b>Agregar</b></a>
-                            </div>
+                            <?php if ($usuarioTipo == 'conserje') {?>
+                                <div class="col-lg-2 d-flex justify-content-end my-2">
+                                    <a href="" class="btn btn-primary w-100" data-bs-toggle="modal"
+                                        data-bs-target="#agregar"><b>Agregar</b></a>
+                                </div>
+                            <?php }?>
                         </div>
 
                     </div>
@@ -55,8 +58,10 @@ $usernameSesion = $_SESSION['nombre'];}?>
                                 <th scope="col">Título</th>
                                 <th scope="col-1">Tipo</th>
                                 <th scope="col-1">Fecha</th>
-                                <th scope="col-4">Descripcion</th>
+                                <th scope="col-4">Descripción</th>
+                                <?php if ($usuarioTipo == 'conserje') {?>
                                 <th scope="col-2">Acción</th>
+                                <?php }?>
                             </tr>
                         </thead>
                         <!-- Body Tabla -->
@@ -95,14 +100,16 @@ $usernameSesion = $_SESSION['nombre'];}?>
                                                         ?></td>
                                 <td><?php echo $fecha_formateada; ?><br><?php echo $formulario_hora; ?></td>
                                 <td ><?php echo "<p style='max-width: 380px;'>".$newdescripcion."</p>" ; ?></td>
+                                <?php if ($usuarioTipo == 'conserje') {?>
                                 <td class="">
                                     <a href="javascript:void(0)" class="btn btn-primary"
                                         onclick="fun('<?php echo $formulario_id;?>')"><i
                                             class="fa-regular fa-pen-to-square"></i></a>
                                     <a class="btn btn-primary "
-                                        href="../controlador/hu4_conserjeria_controlador/hu4_delete.php?id=<?php echo $formulario_id;?>"><i
-                                            class="fa-solid fa-trash-can"></i></a>
+                                        href="../controlador/hu4_conserjeria_controlador/hu4_delete.php?id=<?= $formulario_id;?>"><i
+                                            class="btn-del fa-solid fa-trash-can"></i></a>
                                 </td>
+                                <?php }?>
                             </tr>
                             <?php
                                     $contador++;
@@ -118,7 +125,11 @@ $usernameSesion = $_SESSION['nombre'];}?>
                             </div>
                         </tbody>
 
-                    </table>
+                    </table >
+                    <br><br>
+                    <?php if (isset($_GET['m'])) : ?>
+                        <div class="flash-data" data-flashdata="<?=$_GET['m'];?>"></div>
+                    <?php endif; ?>
                     <!-- fin table -->
                 </div>
 
@@ -169,6 +180,8 @@ $usernameSesion = $_SESSION['nombre'];}?>
     </script>
 
     <!-- sweetalert2 -->
+    <script src="../js/jquery-3.6.1.min.js"></script>
+    <script src="../js/sweetalert2.all.min.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="../js/alerta_agregar.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"

@@ -13,6 +13,7 @@
 	}elseif($sentencia->rowCount() == 1){
 		$_SESSION['nombre'] = $datos->usuario_nombre;
 		$_SESSION['clave'] = $datos->usuario_clave;
+		$_SESSION['tipo'] = $datos->usuario_tipo;
 		header('Location: ../index.php');
 	}
 ?>
