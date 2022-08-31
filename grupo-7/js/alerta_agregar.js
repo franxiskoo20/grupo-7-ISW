@@ -3,6 +3,7 @@ function validar_formulario_publicar() {
     Swal.fire({
         title: '¿Seguro de enviar el formulario?',
         icon: 'question',
+        iconColor: '#a5dc86',
         showCancelButton: true,
         confirmButtonText: 'Si',
         cancelButtonText: 'No',
@@ -20,29 +21,26 @@ function validar_formulario_publicar() {
 
 $('.btn-del').on('click',function(e){
     e.preventDefault();
-    var id = $(this).attr('data-id');
+    var href =$('#del').attr('href');
     Swal.fire({
-
+        icon : 'question',
         title: '¿Estás Seguro?',
         text : 'El aviso será eliminado',
-        type : 'question',
         showCancelButton: true,
-        showConfirmButton: true,
         confirmButtonColor : '#0d6efd',
         cancelButtonColor: '#6e7881',
         confirmButtonText : 'Eliminar aviso!',
-        closeOnConfirm: false,
     }).then((result) => {
         if(result.value){
             console.log(href);
-            document.location.href = "../controlador/hu4_conserjeria_controlador/hu4_delete.php?="+id;
+            document.location.href = href;
         }
     })
 })
 const flashdata = $('.flash-data').data('flashdata')
 if (flashdata){
     Swal.fire({
-        type : 'succes',
+        icon : 'success',
         title : 'Aviso eliminado',
         text : 'De manera Exitosa',
     })
