@@ -104,10 +104,10 @@ $usuarioTipo = $_SESSION['tipo'];
                                             <a href="javascript:void(0)" class="btn btn-primary"
                                                 onclick="fun('<?php echo $formulario_id;?>')"><i
                                                     class="fa-regular fa-pen-to-square"></i></a>
-                                                    <a class="btn btn-primary " type="submit"
-                                                            href="../controlador/hu4_conserjeria_controlador/hu4_delete.php?id=<?= $formulario_id;?>"><i
-                                                                class="btn-del fa-solid fa-trash-can"></i></a>
-                                           
+                                                    <a class="btn btn-primary " id="del"
+                                                    href="../controlador/hu4_conserjeria_controlador/hu4_delete.php?id=<?= $formulario_id;?>"><i
+                                                    class="btn-del fa-solid fa-trash-can"></i>
+                                                    </a>
                                     </td>
                                 <?php }?>
                             </tr>
