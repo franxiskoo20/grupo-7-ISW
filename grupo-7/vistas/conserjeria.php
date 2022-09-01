@@ -37,7 +37,7 @@ $usuarioTipo = $_SESSION['tipo'];
                                 <h7>Si tienes la intención de agregar una publicación al diario mural te invitamos a
                                     presionar el siguiente botón.</h7>
                             </div>
-                            <?php if ($usuarioTipo == 'conserje') {?>
+                            <?php if ($usuarioTipo == 'Conserje') {?>
                                 <div class="col-lg-2 d-flex justify-content-end my-2">
                                     <a href="" class="btn btn-primary w-100" data-bs-toggle="modal"
                                         data-bs-target="#agregar"><b>Agregar</b></a>
@@ -59,7 +59,7 @@ $usuarioTipo = $_SESSION['tipo'];
                                 <th class="text-center border-end" scope="col-1">Tipo</th>
                                 <th class="text-center border-end" scope="col-1">Fecha</th>
                                 <th class="text-center border-end" scope="col-4">Descripción</th>
-                                <?php if ($usuarioTipo == 'conserje') {?>
+                                <?php if ($usuarioTipo == 'Conserje') {?>
                                 <th class="text-center" scope="col-2">Acción</th>
                                 <?php }?>
                             </tr>
@@ -99,7 +99,7 @@ $usuarioTipo = $_SESSION['tipo'];
                                 </td>
                                 <td><?php echo $fecha_formateada; ?><br><?php echo $formulario_hora; ?></td>
                                 <td class="text-start" ><?php echo "<p style='max-width: 380px;'>".$newdescripcion."</p>" ; ?></td>
-                                <?php if ($usuarioTipo == 'conserje') {?>
+                                <?php if ($usuarioTipo == 'Conserje') {?>
                                     <td>
                                             <a href="javascript:void(0)" class="btn btn-primary"
                                                 onclick="fun('<?php echo $formulario_id;?>')"><i
@@ -120,9 +120,6 @@ $usuarioTipo = $_SESSION['tipo'];
                         </tbody>
                     </table >
                     <br><br>
-                    <?php if (isset($_GET['m'])) : ?>
-                        <div class="flash-data" data-flashdata="<?=$_GET['m'];?>"></div>
-                    <?php endif; ?>
                     <!-- fin table -->
                 </div>
 
