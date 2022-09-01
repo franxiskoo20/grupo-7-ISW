@@ -15,15 +15,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $descripcion = $_POST['descripcion'];
     /* Fin información enviada por el formulario */
     if(!empty($tipo && $titulo )){
-        $insertarSql = "INSERT INTO formulario(formulario_titulo,formulario_tipo,formulario_remitente_id, formulario_fecha, formulario_hora,formulario_destacar, formulario_contenido) 
-        VALUES(:formulario_titulo,:formulario_tipo, :formulario_remitente_id, :formulario_fecha, CURTIME() ,:formulario_destacar, :formulario_contenido)";
+        $insertarSql = "INSERT INTO formulario(formulario_titulo,formulario_tipo,formulario_remitente_id, formulario_fecha, formulario_hora,formulario_destinatario_id, formulario_contenido) 
+        VALUES(:formulario_titulo,:formulario_tipo, :formulario_remitente_id, :formulario_fecha, CURTIME() ,:formulario_destinatario_id, :formulario_contenido)";
         
         $insertarSql = $bd->prepare($insertarSql);
         $insertarSql->bindParam(':formulario_titulo',$titulo,PDO::PARAM_STR, 45);
         $insertarSql->bindParam(':formulario_tipo',$tipo,PDO::PARAM_STR, 45);
         $insertarSql->bindParam(':formulario_remitente_id',$usuario_idd,PDO::PARAM_STR);
         $insertarSql->bindParam(':formulario_fecha',$fecha,PDO::PARAM_STR);
-        $insertarSql->bindParam(':formulario_destacar',$destacar,PDO::PARAM_STR);
+        $insertarSql->bindParam(':formulario_destinatario_id',$destacar,PDO::PARAM_STR);
         $insertarSql->bindParam(':formulario_contenido',$descripcion,PDO::PARAM_STR, 500);
         $insertarSql->execute();
     }else{
