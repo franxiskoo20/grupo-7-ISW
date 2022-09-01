@@ -1,9 +1,3 @@
-<?php 
-	session_start();
-	if (isset($_SESSION['nombre'])) {
-		header('Location: index.php');
-	}
-?>
 <!-- head -->
 <?php include('../partes/head.php') ?>
 <!-- fin head -->

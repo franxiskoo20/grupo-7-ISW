@@ -1,5 +1,10 @@
 <?php
 
+// iniciar session 
+ if (!isset($_SESSION)) {
+    session_start();
+ }   
+
 //DATOS DE CONEXION A MYSQLI_CONNECT
 $db_host = "146.83.194.142";
 $db_user = "E7software";
@@ -39,4 +44,5 @@ $con  = mysqli_connect($db_host,$db_user,$db_pass,$db_name);
    
     }
 
+ 
 ?>

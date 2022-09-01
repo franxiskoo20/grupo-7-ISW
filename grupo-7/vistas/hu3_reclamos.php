@@ -1,9 +1,4 @@
-<?php
-if(!isset($_SESSION)) 
-{session_start(); 
-}
-if (isset($_SESSION['nombre'])) {
-$usernameSesion = $_SESSION['nombre'];}?>
+
 <!-- head -->
 <?php include('../partes/head.php') ?>
 <!-- fin head -->
@@ -66,23 +61,26 @@ $usernameSesion = $_SESSION['nombre'];}?>
                                 </thead>
 
                                 <tbody id="body">
-                                    <?php if($consultaFormulario): foreach($consultaFormulario as $row): ?>
+                                    <!-- inicio ciclo -->
+                                    <?php while($row=$mostrarDiariomural->fetch(PDO::FETCH_ASSOC)) { ?>
                                     <tr>
-                                        <td aling="center" >
-                                            <?php echo "<b>".$row['usuario_nombre']."</b>"?>
+                                        <td aling="center">
+                                            <?php echo "<b>".$row->usuario_nombre."</b>"?>
                                             <br>
-                                            <?php echo "<small>"."N° departamento: ".$row['dep_numero']."</small>"?>
+                                            <?php echo "<small>"."N° departamento: ".$row->usuario_vive."</small>"?>
                                             <br>
-                                            <?php echo "<small>".$row['usuario_correo']."</small>"?></td>
+                                            <?php echo "<small>".$row->usuario_correo."</small>"?>
+                                        </td>
 
-                                        <td><?php echo $row['fecha_formateada']?></td>
-                                        <td><?php echo $row['form_hora']?></td>
+                                        <td><?php echo $row->fecha_formateada?></td>
+                                        <td><?php echo 'fecha';?></td>
                                         <td>
-                                            <?php echo "<b>".strtoupper($row['form_titulo'])."</b><br>"?>
-                                            <?php echo $row['form_descripcion']?></td>
+                                            <?php echo "<b>".strtoupper($row->formulario_titulo)."</b><br>"?>
+                                            <?php echo $row->formulario_contenido?></td>
                                         <td>
                                     </tr>
-                                    <?php endforeach; endif ?>
+                                    <?php }?>
+                                      <!-- inicio fin ciclo -->
                                 </tbody>
                             </table>
 
@@ -112,8 +110,9 @@ $usernameSesion = $_SESSION['nombre'];}?>
                                 <?php $hoy= $mDate->format("H:i");?>
 
                                 <div class="form-group col-lg-5 col-md-5">
-                                    <label >Titulo</label>
-                                    <input placeholder="Ingresa un Titulo"type="text" class="form-control" name="titulo">
+                                    <label>Titulo</label>
+                                    <input placeholder="Ingresa un Titulo" type="text" class="form-control"
+                                        name="titulo">
                                 </div>
 
                                 <div class="form-group col-lg-5 col-md-5">
@@ -137,8 +136,8 @@ $usernameSesion = $_SESSION['nombre'];}?>
 
                             <div class="form-group">
                                 <label>Descripción</label>
-                                <textarea placeholder="Ingresa una descripción" rows="10" wrap="hard" class="form-control" name="descripcion"
-                                    required></textarea>
+                                <textarea placeholder="Ingresa una descripción" rows="10" wrap="hard"
+                                    class="form-control" name="descripcion" required></textarea>
                             </div>
                             </tr>
                             <tr>
@@ -170,7 +169,7 @@ $usernameSesion = $_SESSION['nombre'];}?>
 
                             <!-- Siempre los reclamos tienen tipo_form 5 -->
 
-                            
+
                             <div class="d-flex justify-content-center mt-2">
                                 <button type="submit" class="btn btn-primary col-lg-9 col-md-9"><b>Agregar
                                         publicación</b></button>

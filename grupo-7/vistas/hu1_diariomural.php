@@ -1,9 +1,4 @@
-<?php
-if(!isset($_SESSION)) 
-{session_start(); 
-}
-if (isset($_SESSION['nombre'])) {
-$usernameSesion = $_SESSION['nombre'];}?>
+
 <!-- head -->
 <?php include('../partes/head.php') ?>
 <!-- fin head -->
@@ -31,7 +26,7 @@ $usernameSesion = $_SESSION['nombre'];}?>
                     <div class="container shadow px-4 py-3 bg-grey rounded-3 ">
                         <div class="row">
                             <h1 class="font-weight-bold mb-0">¡Bienvenido al Diario mural! -
-                                <?php echo $usernameSesion ?></h1><br>
+                                <?php echo $_SESSION['nombre'] ?></h1><br>
                             <h5>Donde podrás compartir información que consideres importante para la comunidad y
                                 revisar todas las publicaciones existentes hasta el momento. </h5>
                             <hr>
@@ -65,27 +60,30 @@ $usernameSesion = $_SESSION['nombre'];}?>
                                         </tr>
                                     </thead>
 
-                                    <?php if($consultaFormulario): foreach($consultaFormulario as $row): ?>
+                                    <!-- inicio ciclo -->
+                                    <?php if($mostrarDiariomural->rowCount() > 0):
+                                        while($row=$mostrarDiariomural->fetch(PDO::FETCH_ASSOC)):?>
+                                    <?php extract($row); ?>
                                     <tr>
-                                        <td><?php echo "<b style='font-weight: bold;'>".$row['usuario_nombre']."</b><br>"?>
-                                            <?php echo "<small>"."N° departamento: ".$row['dep_numero']."</small><br>"?>
-                                            <?php echo "<small>".$row['usuario_correo']."</small>"?></td>
+                                        <td><?php echo "<b style='font-weight: bold;'>".$usuario_nombre." ".$usuario_apellido."</b><br>"?>
+                                            <?php echo "<small>"."N° departamento: ".$usuario_departamento."</small><br>"?>
+                                            <?php echo "<small>".$usuario_correo."</small>"?></td>
                                         <td>
                                             <?php
                                         
-                                            if($row['tipo_form_nombre'] =='Informacion'){
+                                            if($formulario_tipo =='Informacion'){
                                     
                                                 echo '<span class="badge bg-primary text-white">Información</span>';
 
-                                                }else if($row['tipo_form_nombre']  == 'Publicidad'){
+                                                }else if($formulario_tipo  == 'Publicidad'){
                                             
                                                     echo '<span class="badge bg-danger text-white">Publicidad</span>';
 
-                                                    }else if($row['tipo_form_nombre']  =='Recomendaciones'){
+                                                    }else if($formulario_tipo =='Recomendaciones'){
 
                                                     echo '<span class="badge bg-warning text-white">Recomendaciones</span>';
                                                     
-                                                    }else if($row['tipo_form_nombre']  =='Otro'){
+                                                    }else if($formulario_tipo  =='Otro'){
 
                                                     echo '<span class="badge bg-success text-white">Otro</span>';
 
@@ -95,10 +93,10 @@ $usernameSesion = $_SESSION['nombre'];}?>
 
                                         </td>
 
-                                        <td><?php echo $row['fecha_formateada']?></td>
+                                        <td><?php echo $fecha_formateada?></td>
 
-                                        <td><?php echo "<b style='font-weight: bold;'>".strtoupper($row['form_titulo'])."</b><br>"?>
-                                            <?php echo $row['form_descripcion']?></td>
+                                        <td><?php echo "<b style='font-weight: bold;'>".strtoupper($formulario_titulo)."</b><br>"?>
+                                            <?php echo $formulario_contenido?></td>
 
 
                                         <td>
@@ -106,17 +104,19 @@ $usernameSesion = $_SESSION['nombre'];}?>
                                             <div class="d-flex align-items-stretch justify-content-center">
 
                                                 <a class="btn btn-primary" data-bs-toggle="modal"
-                                                    href="../controlador/hu1_controlador_diariomural/hu1_eliminar_diariomural.php?id=<?php echo $row['form_clave'];?>"><i
+                                                    href="../controlador/hu1_controlador_diariomural/hu1_eliminar_diariomural.php?id=<?php echo $formulario_id?>"><i
                                                         class="fa-solid fa-trash"></i></a>
 
 
                                             </div>
                                         </td>
                                     </tr>
+                                    <!-- inicio fin ciclo -->
+                                    <?php endwhile;endif ?>
                             </div>
 
 
-                            <?php endforeach; endif ?>
+
 
                             </table>
 

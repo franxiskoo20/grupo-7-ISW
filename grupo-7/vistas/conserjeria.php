@@ -1,10 +1,4 @@
-<?php
-if(!isset($_SESSION)) 
-{session_start(); 
-}
-if (isset($_SESSION['nombre'])) {
-$usernameSesion = $_SESSION['nombre'];}?>
-<!-- head -->
+
 <!-- head -->
 <?php include('../partes/head.php') ?>
 <!-- fin head -->
@@ -154,7 +148,7 @@ $usernameSesion = $_SESSION['nombre'];}?>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js"
         integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK" crossorigin="anonymous">
     </script>
-    
+
     <!-- DataTable -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
@@ -181,6 +175,6 @@ $usernameSesion = $_SESSION['nombre'];}?>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="../js/alerta_agregar.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
-        </script>
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
 </body>

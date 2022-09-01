@@ -1,18 +1,38 @@
-<?php session_start();
+<?php 
+
+    session_start();
 	include_once '../bds/conexion.php';
-	$usuario = $_POST['email'];
-	$contrasena = $_POST['password'];
-	$sentencia = $bd->prepare('select * from usuario where usuario_correo = ? and usuario_clave = ?;');
-	$sentencia->execute([$usuario, $contrasena]);
-	$datos = $sentencia->fetch(PDO::FETCH_OBJ);
 
-	if ($datos === FALSE) {
-		echo "errorra 213213";
-		header('Location: login.php');
 
-	}elseif($sentencia->rowCount() == 1){
-		$_SESSION['nombre'] = $datos->usuario_nombre;
-		$_SESSION['clave'] = $datos->usuario_clave;
-		header('Location: ../index.php');
-	}
+	if(isset($_POST['email']) && isset($_POST['password'])){
+
+
+		$sentencia = $bd->prepare('select * from usuario u where usuario_correo = ? and usuario_clave = ?;');
+		$sentencia->execute([$_POST['email'], $_POST['password']]);
+		$datos = $sentencia->fetch(PDO::FETCH_OBJ);
+		
+		
+		if ($datos === FALSE) {
+			echo "no encontro nada";
+			unset($usuario_id,$usuario_nombre,$usuario_apellido);
+			header('Location: ../inicio');
+		}elseif($sentencia->rowCount() == 1){
+			$usuario_id= $datos->usuario_id;
+			$usuario_nombre= $datos->usuario_nombre;
+			$usuario_apellido= $datos->usuario_apellido;
+			$usuario_tipo= $datos->usuario_tipo;
+		
+			$_SESSION['nombre'] = $usuario_nombre;
+			$_SESSION['apellido'] = $usuario_apellido;
+			$_SESSION['id'] = $usuario_id;
+			$_SESSION['login']="Logeado";
+			$_SESSION['tipo']=$usuario_tipo;
+		
+			echo var_dump($_SESSION);
+
+			header('Location: ../inicio');
+		}
+		
+		}
+
 ?>

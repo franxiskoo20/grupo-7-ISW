@@ -1,4 +1,5 @@
 <?php 
+/*
 require_once("../bds/conexion.php");
 
 
@@ -18,5 +19,32 @@ $consultaFormularioSql = "SELECT date_format(form_fecha, '%d-%m-%Y') AS fecha_fo
                           
 
 $consultaFormulario = mysqli_query($con,$consultaFormularioSql);
+*/
+?>
+
+<?php
+require_once('../bds/conexion.php');
+
+$consultaMostrarDiariomural  = "SELECT
+                                        F.formulario_id,
+                                        F.formulario_titulo,
+                                        F.formulario_tipo,
+                                        F.formulario_contenido,
+                                        U.usuario_nombre,
+                                        U.usuario_apellido,
+                                        U.usuario_correo,
+                                        V.usuario_departamento,
+                                        DATE_FORMAT(F.formulario_fecha, '%d-%m-%Y') AS fecha_formateada
+                                        FROM
+                                        formulario F
+                                        INNER JOIN usuario U ON U.usuario_id = F.formulario_remitente_id
+                                        INNER JOIN usuario_vive V ON U.usuario_id = V.usuario_id
+                                        WHERE F.formulario_tipo <> 'Reclamo'
+                                        ORDER BY
+                                        F.formulario_fecha
+                                        DESC";
+                                                 
+$mostrarDiariomural = $bd->prepare($consultaMostrarDiariomural);
+$mostrarDiariomural->execute();
 
 ?>
