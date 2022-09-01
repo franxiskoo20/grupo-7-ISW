@@ -1,11 +1,3 @@
-<?php 
-
-date_default_timezone_set('Chile/Continental');  
-
-$fecha = date('Y-m-d');
-
-?>
-
 <!-- Modal publicar -->
 <div class="modal fade bd-example-modal-lg" id="publicar_diariomural">
     <div class="modal-dialog modal-lg">
@@ -22,15 +14,15 @@ $fecha = date('Y-m-d');
                     action="../controlador/hu1_controlador_diariomural/hu1_publicar_diariomural.php"
                     name="formulario_publicar" method="POST" onsubmit="return validar_formulario_publicar()">
                     <div class="row">
-                        <div class="form-group col-lg-5 col-md-5">
+                        <div class="form-group col-lg-10 col-md-10">
 
                             <label>Tipo de anuncio</label>
                             <select class="form form-control is-invalid" name="tipo_anuncio" required>
                                 <option selected disabled value="">Seleccione uno...</option>
-                                <option value="1">Información</option>
-                                <option value="2">Publicidad</option>
-                                <option value="3">Recomendaciones</option>
-                                <option value="4">Otro</option>
+                                <option value="Información">Información</option>
+                                <option value="Publicidad">Publicidad</option>
+                                <option value="Recomendaciones">Recomendaciones</option>
+                                <option value="Otro">Otro</option>
                             </select>
                             <div class="valid-feedback">
                                 Aceptado.
@@ -39,12 +31,6 @@ $fecha = date('Y-m-d');
                                 Selecciona un estado válido.
                             </div> -->
                         </div>
-
-                        <div class="form-group col-lg-5 col-md-5">
-                            <label>Fecha</label>
-                            <input type="text" class="form-control" value="<?php echo $fecha ?>" disabled>
-                        </div>
-
                         <div class="form-group col-lg-2 col-md-2">
                             <label>Destacar</label>
                             <div class="form-check form-switch form-switch-md">
@@ -80,11 +66,10 @@ $fecha = date('Y-m-d');
                     <div class="form-group">
 
                         <input type="hidden" class="form-control" name="usuario_clave"
-                            value=<?php echo $_SESSION['clave']?>>
+                            value=<?php echo $_SESSION['id']?>>
 
 
                     </div>
-
                     <div class="row mx-5 py-2">
 
                         <div class="form-group col-lg-12 col-md-12">

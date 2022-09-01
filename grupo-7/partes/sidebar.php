@@ -1,12 +1,3 @@
-<?php
-if(!isset($_SESSION)) 
-{   session_start();  
-}
-if (!isset($_SESSION['nombre'])) {
-    header('Location: ../login/login.php');          
-}
-
-?>
 <!-- Sidebar -->
 <div id="sidebar-container" class="bg-primary">
     <div class="logo">

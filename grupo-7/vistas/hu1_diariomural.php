@@ -71,7 +71,7 @@
                                         <td>
                                             <?php
                                         
-                                            if($formulario_tipo =='Informacion'){
+                                            if($formulario_tipo =='Información'){
                                     
                                                 echo '<span class="badge bg-primary text-white">Información</span>';
 

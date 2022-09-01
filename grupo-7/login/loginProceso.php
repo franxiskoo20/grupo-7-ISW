@@ -25,9 +25,9 @@
 			$_SESSION['nombre'] = $usuario_nombre;
 			$_SESSION['apellido'] = $usuario_apellido;
 			$_SESSION['id'] = $usuario_id;
-			$_SESSION['login']="Logeado";
 			$_SESSION['tipo']=$usuario_tipo;
-		
+			$_SESSION['login']="Logeado";
+			
 			echo var_dump($_SESSION);
 
 			header('Location: ../inicio');

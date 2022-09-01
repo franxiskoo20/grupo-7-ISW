@@ -1,7 +1,12 @@
+<?php
+if(!isset($_SESSION)) 
+{   session_start();  
+}
+if (!isset($_SESSION['nombre'])) {
+    header('Location: ../login/login.php');          
+}
+?>
 <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
-    
-
-
     <div class="container">
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"

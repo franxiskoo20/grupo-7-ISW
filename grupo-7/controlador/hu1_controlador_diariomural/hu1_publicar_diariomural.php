@@ -3,41 +3,35 @@
 require_once("../../bds/conexion.php");
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    /* Información enviada por el formulario */
 
     date_default_timezone_set('Chile/Continental');  
+    $titulo = $_POST["titulo"];
+    $tipo_anuncio = $_POST["tipo_anuncio"];
+    $fecha = date('Y-m-d');
+    $hora = date('H:i:s');
+    $descripcion = $_POST["descripcion"];
+    $usuario_clave = $_POST["usuario_clave"];
 
-$tipo_anuncio = $_POST["tipo_anuncio"];
-$fecha = date('Y-m-d');
-$hora = date('H:i:s');
-$titulo = $_POST["titulo"];
-$descripcion = $_POST["descripcion"];
-$usuario_clave = $_POST["usuario_clave"];
+    /* Fin información enviada por el formulario */
+    if(!empty($tipo_anuncio && $fecha && $hora  && $titulo && $descripcion) ){
 
-if(!empty($tipo_anuncio && $fecha && $hora  && $titulo && $descripcion) ){
-    
-    if (isset($_POST['destacar'])){
- 
-        $destacar = 'Si';
+        $publicar_diariomuralSql = "INSERT INTO formulario(formulario_titulo,formulario_tipo,formulario_remitente_id, formulario_fecha, formulario_hora, formulario_contenido) 
+        VALUES(:formulario_titulo,:formulario_tipo,:formulario_remitente_id,:formulario_fecha,:formulario_hora,:formulario_contenido)";
         
+        $publicar_diariomural = $bd->prepare($publicar_diariomuralSql);
+        $publicar_diariomural->bindParam(':formulario_titulo', $titulo);
+        $publicar_diariomural->bindParam(':formulario_tipo', $tipo_anuncio);
+        $publicar_diariomural->bindParam(':formulario_remitente_id', $usuario_clave);
+        $publicar_diariomural->bindParam(':formulario_fecha', $fecha);
+        $publicar_diariomural->bindParam(':formulario_hora', $hora);
+        $publicar_diariomural->bindParam(':formulario_contenido', $descripcion);
+        $publicar_diariomural->execute();
+
     }else{
-
-        $destacar = 'No';
+        echo "error se ingreso campo vacio";
     }
-
-    $publicar_diariomuralSql = "INSERT INTO `formulario`(`usuario_clave`, `tipo_form_clave`, `form_titulo`, `form_descripcion`, `form_fecha`, `form_hora`, `form_importancia`)
-    VALUES ($usuario_clave,'$tipo_anuncio','$titulo','$descripcion','$fecha','$hora','$destacar');";
-    
-    $publicar_diariomural = mysqli_query($con,$publicar_diariomuralSql);
-
-
-}else{
-
-    echo "error se ingreso campo vacio";
-
-}
-
-}
-
-header("Location: ../../vistas/hu1_diariomural.php");
+    header("Location: ../../vistas/hu1_diariomural.php");
+}  
 
 ?>
