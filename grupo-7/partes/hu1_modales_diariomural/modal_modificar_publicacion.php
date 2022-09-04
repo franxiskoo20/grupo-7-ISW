@@ -1,20 +1,24 @@
-<!-- Modal publicar -->
-<div class="modal fade bd-example-modal-lg" id="publicar_diariomural">
+<!-- Modal modificar publicacion -->
+
+<div class="modal fade bd-example-modal-lg" id="modificar_publicacion<?php echo $formulario_id;?>">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h2 class="font-weight-bold mb-0">Formulario de creación de anuncio</h2>
-
-                <button type="button" class="btn btn-primary" class="btn-close" id="cerrarModalDiariomural"
-                    data-bs-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <!-- titulo -->
+                <h2 class="font-weight-bold mb-0">Modificar anuncio</h2>
+                <!-- boton de cerrar modal -->
+                <button type="button" class="btn btn-primary" id="cerrarFormulario" class="close" data-dismiss="modal"
+                    aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
 
             </div>
             <div class="modal-body">
-
-
+                <!-- formulario de actualizar -->
                 <form class="was-validated"
-                    action="../controlador/hu1_controlador_diariomural/hu1_publicar_diariomural.php"
-                    name="formulario_publicar" id="formulario_publicar" method="POST" onsubmit="return validar_formulario_publicar()">
+                    action="../controlador/hu1_controlador_diariomural/hu1_modificar_diariomural.php"
+                    name="formulario_actualizar" method="POST" onsubmit="return validar_formulario_publicar()">
+
                     <div class="row">
                         <div class="form-group col-lg-10 col-md-10">
 
@@ -29,15 +33,13 @@
                             <div class="valid-feedback">
                                 Aceptado.
                             </div>
-                            <!-- <div class="invalid-feedback">
-                                Selecciona un estado válido.
-                            </div> -->
                         </div>
+                        <!-- boton destacar  -->
                         <div class="form-group col-lg-2 col-md-2">
                             <label>Destacar</label>
                             <div class="form-check form-switch form-switch-md">
-                                <input class="form-check-input" type="checkbox" role="switch" name="destacar_anuncio"
-                                    id="destacar_anuncio">
+                                <input class="form-check-input" type="checkbox" role="switch"
+                                    name="destacar_actualizar">
                             </div>
                         </div>
                     </div>
@@ -46,8 +48,8 @@
                         <label>Titulo</label>
                         <input type="text"
                             placeholder="Por favor, elija un titulo para su publicación (5 - 50 caracteres)"
-                            class="form-control is-invalid" name="titulo" autocomplete="off" minlength="10"
-                            maxlength="50" required>
+                            class="form-control is-invalid" name="titulo_actualizar" autocomplete="off" minlength="10"
+                            maxlength="50" value="<?php echo $formulario_titulo?>" required>
                         <div class="valid-feedback">
                             Aceptado.
                         </div>
@@ -56,8 +58,8 @@
                         <label>Descripción</label>
                         <textarea
                             placeholder="Por favor, escriba una descripción para su publicación (10 - 1000 caracteres)"
-                            rows="10" wrap="hard" class="form-control" name="descripcion" minlength="10"
-                            maxlength="1000" required></textarea>
+                            rows="10" wrap="hard" class="form-control" name="descripcion_actualizar" minlength="10"
+                            maxlength="1000" required><?php echo $formulario_contenido?></textarea>
 
                         <div class="valid-feedback">
                             Aceptado.
@@ -91,4 +93,3 @@
         </div>
     </div>
 </div>
-

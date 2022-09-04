@@ -1,6 +1,6 @@
 $(function(){
     $(document).ready(function() {
-        $('#table_id').DataTable({
+        $('#tabla_diariomural').DataTable({
             "drawCallback": function(settings) {
                 $('ul.pagination').addClass("pagination-sm");
             },

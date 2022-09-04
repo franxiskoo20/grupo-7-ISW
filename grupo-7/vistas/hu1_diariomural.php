@@ -1,10 +1,10 @@
-
 <!-- head -->
 <?php include('../partes/head.php') ?>
 <!-- fin head -->
 <!-- mostrar diario mural -->
 <?php include("../controlador/hu1_controlador_diariomural/hu1_mostrar_diariomural.php") ?>
 <!-- fin diario mural -->
+
 
 <body>
     <div class="d-flex" id="content-wrapper">
@@ -22,6 +22,8 @@
 
             <div id="content" class="bg-grey w-100">
 
+                <!-- APARTADO DEL TITULO DIARIO MURAL  -->
+
                 <section class="py-3 bg-light">
                     <div class="container shadow px-4 py-3 bg-grey rounded-3 ">
                         <div class="row">
@@ -33,23 +35,70 @@
                         </div>
                         <div class="row">
                             <h6 class="text-center"><br>Si tienes la intención de agregar una publicación al diario
-                                mural
-                                te invitamos a
-                                presionar el siguiente botón.</h6>
+                                mural te invitamos a presionar el siguiente botón.</h6>
                         </div>
-                        <div class="col d-flex justify-content-end">
-                            <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                                id="btn_publicar_diario" data-bs-target="#publicar_diariomural"><b>Publicar</b></button>
+                        <div class="row">
+                            <!-- botón que permite crear anuncio  -->
+                            <div class="d-flex justify-content-end">
+
+                                <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                    id="btn_publicar_diario" data-bs-target="#publicar_diariomural"><b><i
+                                            class="fa fa-plus mx-1"></i>Publicar</b></button>
+
+
+                            </div>
                         </div>
 
                     </div>
                 </section>
 
+                <!-- FILTRO DIARIO MURAL  -->
+
+                <section class="py-3 bg-light">
+                    <div class="container px-4 py-3 bg-grey rounded-3 ">
+
+                        <!-- formulario filtrar -->
+                        <form action="hu1_diariomural.php" name="filtrar_diariomural_formulario" method="POST">
+                            <div class="row">
+
+                                <!-- select del filtro  -->
+                                <div class="col-lg-3 col-md-2">
+                                    <label for="filtrar_anuncios"><b style='font-weight: bold;'>Filtrar
+                                            anuncios:</b></label>
+                                    <select class="form-control" name="filtrar_anuncios" id="filtrar_anuncios">
+                                        <option value="Mis anuncios"
+                                            <?php echo ($filtrar_anuncios_opcion == 'Mis anuncios')?'selected':''; ?>>
+                                            Mis anuncios</option>
+                                        <option value="Todos"
+                                            <?php echo ($filtrar_anuncios_opcion == 'Todos')?'selected':''; ?>>Todos
+                                        </option>
+                                    </select>
+
+                                </div>
+                                <!-- boton para filtrar -->
+                                <div class="col-lg-3 col-md-2 d-flex align-items-end">
+                                    <input type="hidden" class="form-control" name="usuario_clave_filtrar"
+                                        value=<?php echo $_SESSION['id']?>>
+
+                                    <button type="submit" class="btn btn-primary"><i
+                                            class="fa-solid fa-filter"></i></button>
+                                </div>
+
+                            </div>
+                        </form>
+                    </div>
+
+
+                </section>
+
+
+                <!-- MOSTRAR DIARIO MURAL  -->
+
                 <section class="py-0 my-0">
                     <div class="container">
                         <div class="row">
                             <div class="col-lg-12 col-md-12 ">
-                                <table class="table table-hover" id="table_id">
+                                <table class="table table-hover" name="tabla_diariomural" id="tabla_diariomural">
                                     <thead class="bg-primary">
                                         <tr style="color:white">
                                             <th class="col-lg-3 col-md-2" scope="col">Nombre</th>
@@ -62,13 +111,22 @@
 
                                     <!-- inicio ciclo -->
                                     <?php if($mostrarDiariomural->rowCount() > 0):
+                                
+
                                         while($row=$mostrarDiariomural->fetch(PDO::FETCH_ASSOC)):?>
                                     <?php extract($row); ?>
+
+                                    <?php print("PDO::FETCH_ASSOC: ");
+                                    print("Devolver la siguiente fila como un array indexado por nombre de colunmna\n");
+                                    print_r($row);
+                                    print("\n");   print("\n");  print("\n");
+                                    ?>
+            <br>     <br>
                                     <tr>
                                         <td><?php echo "<b style='font-weight: bold;'>".$usuario_nombre." ".$usuario_apellido."</b><br>"?>
                                             <?php echo "<small>"."N° departamento: ".$usuario_departamento."</small><br>"?>
                                             <?php echo "<small>".$usuario_correo."</small>"?></td>
-                                        <td>
+                                        <td class="col text-center">
                                             <?php
                                         
                                             if($formulario_tipo =='Información'){
@@ -93,15 +151,22 @@
 
                                         </td>
 
-                                        <td><?php echo $fecha_formateada?></td>
+                                        <td class="col text-center">
+                                            <?php echo "<b style='font-weight: bold;'>".$fecha_formateada."</b>"?></td>
 
                                         <td><?php echo "<b style='font-weight: bold;'>".strtoupper($formulario_titulo)."</b><br>"?>
                                             <?php echo $formulario_contenido?></td>
 
 
                                         <td>
-
+                                            <!-- boton de modificar y eleminar -->
                                             <div class="d-flex align-items-stretch justify-content-center">
+
+
+                                                <button type="button" class="btn btn-primary mx-1" data-toggle="modal"
+                                                    data-target="#modificar_publicacion<?php echo $formulario_id;?>">
+                                                    <i class="fa-solid fa-book"></i></button>
+
 
                                                 <a class="btn btn-primary" data-bs-toggle="modal"
                                                     href="../controlador/hu1_controlador_diariomural/hu1_eliminar_diariomural.php?id=<?php echo $formulario_id?>"><i
@@ -111,6 +176,12 @@
                                             </div>
                                         </td>
                                     </tr>
+
+
+                                    <!-- Modal actulizar publicacion -->
+
+                                    <?php include("../partes/hu1_modales_diariomural/modal_modificar_publicacion.php") ;?>
+
                                     <!-- inicio fin ciclo -->
                                     <?php endwhile;endif ?>
                             </div>
@@ -161,6 +232,27 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/js/all.min.js"
         integrity="sha512-6PM0qYu5KExuNcKt5bURAoT6KCThUmHRewN3zUFNaoI6Di7XJPTMoT6K0nsagZKk2OB4L7E3q1uQKHNHd4stIQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- Limpiar modal crear anuncio -->
+    <script>
+    $(function() {
+
+        const $ventanaPublicarDiariomural = $('#publicar_diariomural');
+        const $botonCerrar = $('#cerrarModalDiariomural');
+
+        $botonCerrar.on('click', function() {
+
+            $ventanaPublicarDiariomural.modal('show');
+
+        });
+
+        $ventanaPublicarDiariomural.on('hidden.bs.modal', function(event) {
+
+            const $formulario = $ventanaPublicarDiariomural.find('form');
+            $formulario[0].reset();
+        });
+
+    });
+    </script>
 
     <!-- Data table -->
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>

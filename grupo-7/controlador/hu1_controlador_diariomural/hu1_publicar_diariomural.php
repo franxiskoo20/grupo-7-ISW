@@ -13,11 +13,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $descripcion = $_POST["descripcion"];
     $usuario_clave = $_POST["usuario_clave"];
 
+
+    if (isset($_POST['destacar_anuncio'])){
+        $destacar_anuncio = '1';
+        
+    }else{
+        $destacar_anuncio = '0';
+    }
+
     /* Fin información enviada por el formulario */
     if(!empty($tipo_anuncio && $fecha && $hora  && $titulo && $descripcion) ){
 
-        $publicar_diariomuralSql = "INSERT INTO formulario(formulario_titulo,formulario_tipo,formulario_remitente_id, formulario_fecha, formulario_hora, formulario_contenido) 
-        VALUES(:formulario_titulo,:formulario_tipo,:formulario_remitente_id,:formulario_fecha,:formulario_hora,:formulario_contenido)";
+        $publicar_diariomuralSql = "INSERT INTO formulario(formulario_titulo,formulario_tipo,formulario_remitente_id, formulario_fecha, formulario_hora, 
+                                                formulario_contenido, formulario_destacar) 
+        VALUES(:formulario_titulo,:formulario_tipo,:formulario_remitente_id,:formulario_fecha,:formulario_hora,:formulario_contenido,:formulario_destacar)";
         
         $publicar_diariomural = $bd->prepare($publicar_diariomuralSql);
         $publicar_diariomural->bindParam(':formulario_titulo', $titulo);
@@ -26,6 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $publicar_diariomural->bindParam(':formulario_fecha', $fecha);
         $publicar_diariomural->bindParam(':formulario_hora', $hora);
         $publicar_diariomural->bindParam(':formulario_contenido', $descripcion);
+        $publicar_diariomural->bindParam(':formulario_destacar', $destacar_anuncio);
         $publicar_diariomural->execute();
 
     }else{
