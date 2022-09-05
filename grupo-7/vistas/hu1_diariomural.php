@@ -24,7 +24,7 @@
 
                 <!-- APARTADO DEL TITULO DIARIO MURAL  -->
 
-                <section class="py-3 bg-light">
+                <section class="py-3">
                     <div class="container shadow px-4 py-3 bg-grey rounded-3 ">
                         <div class="row">
                             <h1 class="font-weight-bold mb-0">¡Bienvenido al Diario mural! -
@@ -52,10 +52,10 @@
                     </div>
                 </section>
 
-                <!-- FILTRO DIARIO MURAL  -->
+                <!-- FILTRO DIARIO MURAL Y HISTORIAL FORMULARIO  -->
 
-                <section class="py-3 bg-light">
-                    <div class="container px-4 py-3 bg-grey rounded-3 ">
+                <section class="py-3">
+                    <div class="container shadow px-4 py-3 bg-grey rounded-3">
 
                         <!-- formulario filtrar -->
                         <form action="hu1_diariomural.php" name="filtrar_diariomural_formulario" method="POST">
@@ -76,7 +76,8 @@
 
                                 </div>
                                 <!-- boton para filtrar -->
-                                <div class="col-lg-3 col-md-2 d-flex align-items-end">
+                                <div class="col-lg-1 col-md-1 d-flex align-items-end">
+
                                     <input type="hidden" class="form-control" name="usuario_clave_filtrar"
                                         value=<?php echo $_SESSION['id']?>>
 
@@ -84,18 +85,42 @@
                                             class="fa-solid fa-filter"></i></button>
                                 </div>
 
+                                <div class="col-lg-8 col-md-9">
+                                    <div>
+                                        <label for="formularo_historial"><b style='font-weight: bold;'>Historial de
+                                                anuncios:</b></label>
+                                        <div class="d-flex align-items-end">
+                                            <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                                id="btn_formulario_historial" data-bs-target="#formulario_historial"><i
+                                                    class="fa-solid fa-clipboard " style="color:#ffffff;"></i></button>
+
+                                        </div>
+
+
+                                    </div>
+
+
+
+                                </div>
+
                             </div>
+
+
+
                         </form>
+
                     </div>
+
+
+
 
 
                 </section>
 
-
                 <!-- MOSTRAR DIARIO MURAL  -->
 
                 <section class="py-0 my-0">
-                    <div class="container">
+                    <div class="container shadow px-4 py-3 bg-grey rounded-3">
                         <div class="row">
                             <div class="col-lg-12 col-md-12 ">
                                 <table class="table table-hover" name="tabla_diariomural" id="tabla_diariomural">
@@ -226,6 +251,9 @@
     <!-- Modal publicar -->
 
     <?php include("../partes/hu1_modales_diariomural/modal_publicar.php") ?>
+
+    <!-- Modal historial formulario -->
+    <?php include("../partes/hu1_modales_diariomural/modal_formulario_historial.php") ?>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
