@@ -16,4 +16,5 @@
 
    }
    
+   header("Location: ../../vistas/hu1_diariomural.php");
 ?>
