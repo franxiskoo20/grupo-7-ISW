@@ -23,7 +23,7 @@
             <?php if($_GET['id'] == $formulario_id){ ?>
             <div class="modal-body mt-4">
             <!-- Formulario Crear nuevo Aviso de Conserjería -->
-                <form class="was-validated" action="../controlador/hu4_conserjeria_controlador/hu4_edit.php"  method="POST" name="formulario_publicar" onsubmit="return validar_formulario_publicar()">
+                <form class="was-validated" action="../controlador/hu4_conserjeria_controlador/hu4_edit.php"  method="POST" name="formulario_modificar" onsubmit="return validar_formulario_modificar()">
                     
                         <div class="row">
                             <div class="col">
