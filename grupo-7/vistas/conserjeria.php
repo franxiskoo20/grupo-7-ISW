@@ -6,6 +6,27 @@ if (isset($_SESSION['nombre'])) {
 $usernameSesion = $_SESSION['nombre'];
 $usuarioTipo = $_SESSION['tipo'];
 }?>
+<?php
+function borrarErrores(){
+	$borrado = false;
+	
+
+	if(isset($_SESSION['eliminado'])){
+		$_SESSION['eliminado'] = null;
+		$borrado = true;
+	}
+    if(isset($_SESSION['ingresado'])){
+		$_SESSION['ingresado'] = null;
+		$borrado = true;
+	}
+    if(isset($_SESSION['modificado'])){
+		$_SESSION['modificado'] = null;
+		$borrado = true;
+	}
+	
+	return $borrado;
+}
+?>
 <!-- head -->
 <!-- head -->
 <?php include('../partes/head.php') ?>
@@ -32,11 +53,27 @@ $usuarioTipo = $_SESSION['tipo'];
                             <hr>
                         </div>
                         <div class="row d-flex  text-center">
+                        <?php if(isset($_SESSION['eliminado'])){ ?>
+                                    <div class="alert alert-success" role="alert">
+                                    <h5 class="text-center">Aviso eliminado exitosamente!</h5>
+                                    </div>
+                        <?php }else{if(isset($_SESSION['ingresado'])){
+                            echo "<div class='alert alert-success' role='alert'>
+                            <h5 class='text-center'>Aviso ingresado exitosamente!</h5>
+                            </div>";
+                            }else{if(isset($_SESSION['modificado'])){
+                                echo "<div class='alert alert-success' role='alert'>
+                                <h5 class='text-center'>Aviso modificado exitosamente!</h5>
+                                </div>";
 
-                            <div class="col">
+                            }}} ?>
+                            <?php borrarErrores(); ?> 
+
+                            <div class="col my-2">
                                 <h7>Si tienes la intención de agregar una publicación al diario mural te invitamos a
                                     presionar el siguiente botón.</h7>
                             </div>
+
                             <?php if ($usuarioTipo == 'Conserje') {?>
                                 <div class="col-lg-2 d-flex justify-content-end my-2">
                                     <a href="" class="btn btn-primary w-100" data-bs-toggle="modal"
@@ -44,8 +81,10 @@ $usuarioTipo = $_SESSION['tipo'];
                                 </div>
                             <?php }?>
                         </div>
+                         
 
                     </div>
+                    
                 </section>
 
                 <div class="container table-responsive text-center">
@@ -64,6 +103,7 @@ $usuarioTipo = $_SESSION['tipo'];
                                 <?php }?>
                             </tr>
                         </thead>
+                        <!-- Condición para viasualizar solo avisos de la vista -->
                         <!-- Body Tabla -->
                         <tbody id="body">
                             <!-- Recorrer fila por cada registro -->
@@ -101,13 +141,14 @@ $usuarioTipo = $_SESSION['tipo'];
                                 <td class="text-start" ><?php echo "<p style='max-width: 380px;'>".$newdescripcion."</p>" ; ?></td>
                                 <?php if ($usuarioTipo == 'Conserje') {?>
                                     <td>
-                                            <a href="javascript:void(0)" class="btn btn-primary"
+                                            <a title="Editar" href="javascript:void(0)" class="btn btn-primary"
                                                 onclick="fun('<?php echo $formulario_id;?>')"><i
-                                                    class="fa-regular fa-pen-to-square"></i></a>
-                                                    <a class="btn btn-primary " id="del"
+                                                    class="fa-regular fa-pen-to-square"></i>
+                                            </a>
+                                            <a title ="Eliminar" class="btn btn-primary " id="del"
                                                     href="../controlador/hu4_conserjeria_controlador/hu4_delete.php?id=<?= $formulario_id;?>"><i
                                                     class="btn-del fa-solid fa-trash-can"></i>
-                                                    </a>
+                                            </a>
                                     </td>
                                 <?php }?>
                             </tr>
@@ -154,7 +195,7 @@ $usuarioTipo = $_SESSION['tipo'];
     <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js"></script>
     <!-- script para datatable modificado -->
-    <script src="../js/hu4_conserjeria.js"></script>
+    
     //Envía el id y se muestra el registro por modal.
     <script>
     function fun(id) {
@@ -171,7 +212,9 @@ $usuarioTipo = $_SESSION['tipo'];
 
     <!-- sweetalert2 -->
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.29/dist/sweetalert2.all.min.js"></script>
     <script src="../js/alerta_agregar.js"></script>
+    <script src="../js/hu4_conserjeria.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
             integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
         </script>
