@@ -40,7 +40,7 @@
                     <?php else:?>
 
                     <td class="col text-center" colspan="2">
-                        <p>Historial de anuncios vacio</p>
+                        <p>Historial de anuncios borrados vacio</p>
                     </td>
 
                     <?php endif?>
@@ -50,12 +50,15 @@
                 <form action="../controlador/hu1_controlador_diariomural/hu1_eliminar_historial_anuncio.php"
                     name="borrar_historial_anuncios" id="borrar_historial_anuncios" method="POST">
 
+                    <div class="d-flex justify-content-center"> >
 
-                    <input type="hidden" class="form-control" name="id_borrar_historial"
-                        value=<?php echo $_SESSION['id']?>>
+                        <input type="hidden" class="form-control" name="id_borrar_historial"
+                            value=<?php echo $_SESSION['id']?>>
 
-                    <button type="submit" class="btn btn-primary col-lg-3 col-md-3"><b><i
-                                class="fa fa-plus mx-1"></i>Borrar historial</b></button>
+                        <button type="submit" class="btn btn-primary col-lg-3 col-md-3"><b><i
+                                    class="fa-solid fa-broom mx-1"></i>Borrar historial</b></button>
+                    </div>
+
 
                 </form>
 
