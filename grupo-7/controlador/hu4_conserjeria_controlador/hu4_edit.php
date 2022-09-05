@@ -1,5 +1,7 @@
 <?php 
-
+if(!isset($_SESSION)) 
+{session_start(); 
+}
 require_once("../../bds/conexion.php");
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -22,6 +24,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $editSql->bindParam(':formulario_contenido',$formulario_contenido,PDO::PARAM_STR, 500);
 
         $editSql->execute();
+        $_SESSION['modificado'] = 'Modificado';
+        header("Location: ../../vistas/conserjeria.php");
      }else{
         echo "error se ingreso campo vacio";
     }
@@ -29,7 +33,3 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 ?>
-<script>
-alert("Registro Modificado exitosamente!!");
-window.location.href = '../../vistas/conserjeria.php';
-</script>

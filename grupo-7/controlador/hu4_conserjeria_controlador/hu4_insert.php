@@ -26,6 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $insertarSql->bindParam(':formulario_destinatario_id',$destacar,PDO::PARAM_STR);
         $insertarSql->bindParam(':formulario_contenido',$descripcion,PDO::PARAM_STR, 500);
         $insertarSql->execute();
+        $_SESSION['ingresado'] = "Ingresado";
     }else{
         echo "error se ingreso campo vacio";
     }
