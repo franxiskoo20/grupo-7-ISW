@@ -7,8 +7,6 @@ require_once('../bds/conexion.php');
         $filtrar_anuncios_opcion =  'Mis anuncios';
        
         $usuario_filtrar = $_POST['usuario_clave_filtrar'];
-      
-        echo $usuario_filtrar; 
  // Mis anuncios 
                 $consultaMostrarDiariomural  = "SELECT
                 F.formulario_id,
@@ -37,7 +35,6 @@ require_once('../bds/conexion.php');
  // Todos 
         
        $filtrar_anuncios_opcion = 'Todos';
-        echo "Si no se manda nada";
         $consultaMostrarDiariomural  = "SELECT
          F.formulario_id,
          F.formulario_titulo,

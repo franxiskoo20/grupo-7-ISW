@@ -5,6 +5,8 @@
 <!-- mostrar diario mural -->
 <?php include("../controlador/hu3_controlador_reclamos/hu3_mostrar_reclamos.php") ?>
 <!-- fin diario mural -->
+<!-- mostrar historial anuncios -->
+
 
 <body>
 

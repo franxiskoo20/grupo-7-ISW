@@ -5,6 +5,9 @@
 <?php include("../controlador/hu1_controlador_diariomural/hu1_mostrar_diariomural.php") ?>
 <!-- fin diario mural -->
 
+<?php include '../controlador/hu1_controlador_diariomural/hu1_mostrar_historial_formulario.php'; ?>
+<!-- fin historial anuncios -->
+
 
 <body>
     <div class="d-flex" id="content-wrapper">
