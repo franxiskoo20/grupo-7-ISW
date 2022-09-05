@@ -119,12 +119,16 @@
                                     <tr>
                                         <td>
                                             <?php if($formulario_destacar =='1'){
-                                                echo "<b style='font-weight: bold;'>".$usuario_nombre." ".$usuario_apellido."</b><i class='fa-solid fa-star mx-1' style='color:#ffaa00;'></i><br>";
-                                                echo "<small>"."N° departamento: ".$usuario_departamento."</small><br>";
+                                                echo "<b style='font-weight: bold;'>".$usuario_nombre." ".$usuario_apellido."</b><i class='fa-solid fa-star mx-1' style='color:#ffaa00;'></i>";
+                                                echo $formulario_actualizar == '1'?'<i class="fa-solid fa-pencil" style="color:#111B54;"></i>':'';
+
+
+                                                echo "<br><small>"."N° departamento: ".$usuario_departamento."</small><br>";
                                                 echo "<small>".$usuario_correo."</small>";
                                             }else{
-                                                echo "<b style='font-weight: bold;'>".$usuario_nombre." ".$usuario_apellido."</b><br>";
-                                                echo "<small>"."N° departamento: ".$usuario_departamento."</small><br>";
+                                                echo "<b style='font-weight: bold;'>".$usuario_nombre." ".$usuario_apellido."</b>";
+                                                echo $formulario_actualizar == '1'?'<i class="fa-solid fa-pencil" style="color:#111B54;"></i>':'';
+                                                echo "<br><small>"."N° departamento: ".$usuario_departamento."</small><br>";
                                                 echo "<small>".$usuario_correo."</small>";
 
                                             }
@@ -171,44 +175,41 @@
 
                                                     if($formulario_remitente_id == $_SESSION['id'] ){
 
-                                                        echo "<button type='button' class='btn btn-primary mx-1' data-toggle='modal'
-                                                            data-target='#modificar_publicacion".$formulario_id."'>
-                                                            <i class='fa-solid fa-book'></i></button>";
-        
-                                            
-                                                        echo "<a class='btn btn-primary' data-bs-toggle='modal'
-                                                            href=../controlador/hu1_controlador_diariomural/hu1_eliminar_diariomural.php?id=".$formulario_id."><i
-                                                                class='fa-solid fa-trash'></i></a>";
+                                     
+                                                        echo "<button type='button' class='btn btn-primary mx-1'
+                                                        data-toggle='modal'
+                                                        data-target='#modificar_publicacion".$formulario_id."'>
+                                                        <i class='fa-solid fa-book'></i></button>";
+    
+
+                                                echo "<a class='btn btn-primary' data-bs-toggle='modal'
+                                                    href=../controlador/hu1_controlador_diariomural/hu1_eliminar_diariomural.php?id=".$formulario_id."><i
+                                                        class='fa-solid fa-trash'></i></a>";
 
 
-                                                        }else{
+                                                }else{
 
-                                                            echo "<button type='button' class='btn btn-secondary mx-1' data-toggle='modal'
-                                                            data-target='#modificar_publicacion".$formulario_id."'disabled>
-                                                            <i class='fa-solid fa-book'></i></button>";
+                                                echo "<button type='button' class='btn btn-secondary mx-1'
+                                                    data-toggle='modal'
+                                                    data-target='#modificar_publicacion".$formulario_id."' disabled>
+                                                    <i class='fa-solid fa-book'></i></button>";
 
-                                            
-                                                    echo "<a class='btn btn-secondary disabled' data-bs-toggle='modal'
-                                                        href=../controlador/hu1_controlador_diariomural/hu1_eliminar_diariomural.php?id=".$formulario_id."><i
-                                                            class='fa-solid fa-trash'></i></a>";
 
-                                                        }
+                                                echo "<a class='btn btn-secondary disabled' data-bs-toggle='modal'
+                                                    href=../controlador/hu1_controlador_diariomural/hu1_eliminar_diariomural.php?id=".$formulario_id."><i
+                                                        class='fa-solid fa-trash'></i></a>";
+
+                                                }
                                                 ?>
                                             </div>
                                         </td>
                                     </tr>
+                                    <?php include("../partes/hu1_modales_diariomural/modal_modificar_publicacion.php") ?>
 
-
-                                    <!-- Modal actulizar publicacion -->
-
-                                    <?php include("../partes/hu1_modales_diariomural/modal_modificar_publicacion.php") ;?>
-
-                                    <!-- inicio fin ciclo -->
+                                    <!-- fin ciclo -->
                                     <?php endwhile;endif ?>
+
                             </div>
-
-
-
 
                             </table>
 
@@ -225,7 +226,6 @@
     <!-- Modal publicar -->
 
     <?php include("../partes/hu1_modales_diariomural/modal_publicar.php") ?>
-
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -276,6 +276,7 @@
     });
     </script>
 
+
     <!-- Data table -->
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js">
@@ -289,7 +290,7 @@
 
     <!-- Sweet alert-->
     <script type="text/javascript" src="../js/alerta_agregar.js"></script>
-    <script type="text/javascript" src="../js/alerta_eliminar.js"></script>
+    <script type="text/javascript" src="../js/alerta_modificar_diariomural.js"></script>
 
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">

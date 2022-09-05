@@ -1,4 +1,3 @@
-
 <!-- head -->
 <?php include('../partes/head.php') ?>
 <!-- fin head -->
@@ -80,7 +79,7 @@
                                         <td>
                                     </tr>
                                     <?php }?>
-                                      <!-- inicio fin ciclo -->
+                                    <!-- inicio fin ciclo -->
                                 </tbody>
                             </table>
 

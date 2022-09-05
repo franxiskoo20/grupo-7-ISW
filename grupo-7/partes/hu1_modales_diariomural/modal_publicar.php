@@ -5,8 +5,8 @@
             <div class="modal-header">
                 <h2 class="font-weight-bold mb-0">Formulario de creación de anuncio</h2>
 
-                <button type="button" class="btn btn-primary" class="btn-close" id="cerrarModalDiariomural"
-                    data-bs-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <button type="button" class="btn-close" id="cerrarModalDiariomural"
+                    data-bs-dismiss="modal" aria-label="Close"></button>
 
             </div>
             <div class="modal-body">
