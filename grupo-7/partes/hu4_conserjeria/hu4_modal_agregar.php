@@ -1,3 +1,4 @@
+
  <!-- Modal -->
     <div class="modal fade" id="agregar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -49,9 +50,9 @@
               <div class="row">
                   
                   <div class="col w-100 " >
-                  <textarea class="input-text form-control" name="descripcion" placeholder="Por favor, escriba un comentario para su aviso (10 - 1000 caracteres)"
+                  <textarea class="input-text form-control" name="descripcion" placeholder="Por favor, escriba un comentario para su aviso (10 - 900 caracteres)"
                             rows="18" wrap="hard" name="descripcion" minlength="10"
-                            maxlength="1000" style="height: 135px; width:100%;"></textarea>
+                            maxlength="900" style="height: 135px; width:100%;"></textarea>
                   </div>
               </div>
               <br>
