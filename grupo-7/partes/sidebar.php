@@ -17,19 +17,16 @@
             Conserjeria</a>
 
         <a href="../vistas/hu3_reclamos.php" class="d-block text-light p-3 border-0"><i class="fas fa-exclamation-triangle"></i>
-            Reclamos</a>
-
-
+            Reclamos </a>
+            
     <!-- Solo muestra reclamos si ingreso como administrador -->
 
-    <?php if(isset($_SESSION['nombre']) && $_SESSION['tipo']=="Administrador"){
+    <?php if(isset($_SESSION['nombre']) && ($_SESSION['tipo']=="Conserje" || $_SESSION['tipo']=="Administrador")){
+                
+                echo '<a href="../vistas/hu3_reclamos_conserje.php" class="d-block text-light p-3 border-0"><i class="fas fa-exclamation-triangle"></i>
+                Reclamos Conserje</a>';
             
-            echo '<a href="../vistas/hu3_reclamos.php" class="d-block text-light p-3 border-0"><i class="fas fa-exclamation-triangle"></i>
-            Reclamos</a>';
-           
-        }?>
-            
-
+            }?>
 
     </div>
 </div>

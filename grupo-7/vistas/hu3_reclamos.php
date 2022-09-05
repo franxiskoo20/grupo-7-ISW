@@ -21,6 +21,11 @@ function borrarErrores(){
 
 <!-- fin diario mural -->
 
+<?php if(!isset($_SESSION['tipo'])){
+
+ header('Location: ../inicio');
+}
+?>
 <body>
 
     <div class="d-flex" id="content-wrapper">
@@ -84,6 +89,7 @@ function borrarErrores(){
                                     <th scope="col">Residencia</th>
                                     <th scope="col-1">Fecha</th>
                                     <th scope="col-1">Descripción </th>
+                                    <th scope="col-1">Opciones </th>
 
 
                                 </tr>
@@ -92,8 +98,8 @@ function borrarErrores(){
                                 <?php if($consulta_reclamos_sql): foreach($resultado as $row): ?>
                                 <tr>
                                     <td aling="center">
-                                        <?php echo "<b>".$row['destinatario_nombre']." ".$row['destinatario_apellido']."</b>"?>
-                                        <br>
+                                        <?php  echo "<b style='font-weight: bold;'>".$row['destinatario_nombre']." ".$row['destinatario_apellido']."</b><br>";?>
+                                        
                                         <?php echo "<small>"."N° departamento: ".$row['destinatario_departamento']."</small>"?>
                                         <br>
                                         <?php echo "<small>".$row['destinatario_correo']."</small>"?>
@@ -103,13 +109,28 @@ function borrarErrores(){
                                         <br>
                                         <?php echo "N° departamento:".$row['destinatario_departamento']?>
                                     </td>
-
                                     <td><?php echo $row['formulario_fecha']." ".$row['formulario_hora']?></td>
 
+                                    
+
                                     <td>
-                                        <?php echo "<b>".strtoupper($row['formulario_titulo'])."</b><br>"?>
+                                    <?php  echo "<b style='font-weight: bold;'>".$row['formulario_titulo']."</b><br>";?>
                                         <?php echo $row['formulario_contenido']?></td>
+                                    
                                     <td>
+                                    <?php echo "<button type='button' class='btn btn-primary mx-1' data-toggle='modal'
+                                                            data-target=''>
+                                                            <i class='fa-solid fa-book'></i></button>";
+
+                                    echo "<a class='btn btn-primary' data-bs-toggle='modal'
+                                                            href=../controlador/hu1_controlador_diariomural/hu1_eliminar_diariomural.php?id=''><i
+                                                                class='fa-solid fa-trash'></i></a>";?>
+                                    </td>
+                                    
+
+
+                                    
+                                    
                                 </tr>
                                 <?php endforeach; endif ?>
 
@@ -133,8 +154,8 @@ function borrarErrores(){
                             </button>
                         </div>
                         <div class="modal-body">
-                            <form class="was-validated" method="POST"
-                                action="../partes/hu3_reclamos_vecinos/insertar.php">
+                            <form class="was-validated" method="POST" id="formulario_reclamos" name="formulario_reclamos"
+                                action="../partes/hu3_reclamos_vecinos/insertar.php" onsubmit="return validar_formulario_reclamos()">
                                 <div class="row">
                                     <?php $fecha = date("Y-m-d");?>
                                     <?php $mDate=new DateTime();?>
@@ -152,7 +173,7 @@ function borrarErrores(){
 
                                     <div class="form-group col-lg-5 col-md-5">
                                         <label>Dirigido a:</label>
-                                        <select class="form form-control is-invalid" name="formulario_destinatario_id"
+                                        <select id="myselect" class="form form-control is-invalid" name="formulario_destinatario_id"
                                             required>
                                             <option value="" disabled selected>Ingresa un Vecino.</option>
                                             <?php $getUsuarios= $con->query("SELECT * FROM usuario");
@@ -224,8 +245,9 @@ function borrarErrores(){
                     </div>
                 </div>
             </div>
-
-
+            
+            
+                                                            
             <!-- Optional JavaScript -->
             <!-- jQuery first, then Popper.js, then Bootstrap JS -->
             <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
@@ -279,6 +301,8 @@ function borrarErrores(){
                 integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
                 crossorigin="anonymous">
             </script>
+
+            <script type="text/javascript" src="../js/notificacion.js"></script>
 
             <?php include('../partes/hu4_conserjeria/hu4_modal_agregar.php'); ?>
 
