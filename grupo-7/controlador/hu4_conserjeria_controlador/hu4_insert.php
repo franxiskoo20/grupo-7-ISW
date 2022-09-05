@@ -1,7 +1,5 @@
 <?php
-if(!isset($_SESSION)) 
-{session_start(); 
-}
+
 if (isset($_SESSION['id'])) {
     $usuario_idd = $_SESSION['id'];
     }

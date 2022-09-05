@@ -1,7 +1,5 @@
 <?php
-if(!isset($_SESSION)) 
-{session_start(); 
-}
+
 require_once("../../bds/conexion.php");
 if ($_SERVER['REQUEST_METHOD'] === 'GET') { 
     $eliminar = $_GET["id"]; 
