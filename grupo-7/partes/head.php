@@ -31,8 +31,11 @@
 
     <!-- Data table -->
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css" />
-
-
+    <!-- Style sweet alert -->
+    <link rel="stylesheet" href="../assets/css/sweetalert2.min.css">
+    <!-- sweetalert2 -->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.29/dist/sweetalert2.all.mi"></script>
     <title>IG - Grupo 7</title>
 
 </head>
