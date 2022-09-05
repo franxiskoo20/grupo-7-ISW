@@ -28,8 +28,8 @@ require_once('../bds/conexion.php');
                 INNER JOIN usuario_vive V ON U.usuario_id = V.usuario_id and  U.usuario_id = '$usuario_filtrar'
                 WHERE F.formulario_tipo <> 'Reclamo'
                 ORDER BY
-                F.formulario_destacar = 1
-                ASC";
+                F.formulario_destacar 
+                DESC";
         
 	}else{
 
@@ -38,15 +38,16 @@ require_once('../bds/conexion.php');
        $filtrar_anuncios_opcion = 'Todos';
         echo "Si no se manda nada";
         $consultaMostrarDiariomural  = "SELECT
-        F.formulario_destacar,
-        F.formulario_id,
-        F.formulario_titulo,
-        F.formulario_tipo,
-        F.formulario_contenido,
-        U.usuario_nombre,
-        U.usuario_apellido,
-        U.usuario_correo,
-        V.usuario_departamento,
+         F.formulario_id,
+         F.formulario_titulo,
+         F.formulario_tipo,
+         F.formulario_contenido,
+         F.formulario_remitente_id,
+         F.formulario_destacar,
+         U.usuario_nombre,
+         U.usuario_apellido,
+         U.usuario_correo,
+         V.usuario_departamento,
         DATE_FORMAT(F.formulario_fecha, '%d-%m-%Y') AS fecha_formateada
         FROM
         formulario F

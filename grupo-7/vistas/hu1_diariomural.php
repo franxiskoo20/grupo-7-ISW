@@ -113,19 +113,24 @@
                                     <?php if($mostrarDiariomural->rowCount() > 0):
                                 
 
-                                        while($row=$mostrarDiariomural->fetch(PDO::FETCH_ASSOC)):?>
-                                    <?php extract($row); ?>
+                                        while($row=$mostrarDiariomural->fetch(PDO::FETCH_ASSOC)):
+                                        extract($row); ?>
 
-                                    <?php print("PDO::FETCH_ASSOC: ");
-                                    print("Devolver la siguiente fila como un array indexado por nombre de colunmna\n");
-                                    print_r($row);
-                                    print("\n");   print("\n");  print("\n");
-                                    ?>
-            <br>     <br>
                                     <tr>
-                                        <td><?php echo "<b style='font-weight: bold;'>".$usuario_nombre." ".$usuario_apellido."</b><br>"?>
-                                            <?php echo "<small>"."N° departamento: ".$usuario_departamento."</small><br>"?>
-                                            <?php echo "<small>".$usuario_correo."</small>"?></td>
+                                        <td>
+                                            <?php if($formulario_destacar =='1'){
+                                                echo "<b style='font-weight: bold;'>".$usuario_nombre." ".$usuario_apellido."</b><i class='fa-solid fa-star mx-1' style='color:#ffaa00;'></i><br>";
+                                                echo "<small>"."N° departamento: ".$usuario_departamento."</small><br>";
+                                                echo "<small>".$usuario_correo."</small>";
+                                            }else{
+                                                echo "<b style='font-weight: bold;'>".$usuario_nombre." ".$usuario_apellido."</b><br>";
+                                                echo "<small>"."N° departamento: ".$usuario_departamento."</small><br>";
+                                                echo "<small>".$usuario_correo."</small>";
+
+                                            }
+                                            ?>
+                                        </td>
+
                                         <td class="col text-center">
                                             <?php
                                         
@@ -154,7 +159,7 @@
                                         <td class="col text-center">
                                             <?php echo "<b style='font-weight: bold;'>".$fecha_formateada."</b>"?></td>
 
-                                        <td><?php echo "<b style='font-weight: bold;'>".strtoupper($formulario_titulo)."</b><br>"?>
+                                        <td><?php echo "<p class='text-center my-0'><b style='font-weight: bold;'>".strtoupper($formulario_titulo)."</p></b>"?>
                                             <?php echo $formulario_contenido?></td>
 
 
@@ -162,17 +167,33 @@
                                             <!-- boton de modificar y eleminar -->
                                             <div class="d-flex align-items-stretch justify-content-center">
 
+                                                <?php
 
-                                                <button type="button" class="btn btn-primary mx-1" data-toggle="modal"
-                                                    data-target="#modificar_publicacion<?php echo $formulario_id;?>">
-                                                    <i class="fa-solid fa-book"></i></button>
+                                                    if($formulario_remitente_id == $_SESSION['id'] ){
+
+                                                        echo "<button type='button' class='btn btn-primary mx-1' data-toggle='modal'
+                                                            data-target='#modificar_publicacion".$formulario_id."'>
+                                                            <i class='fa-solid fa-book'></i></button>";
+        
+                                            
+                                                        echo "<a class='btn btn-primary' data-bs-toggle='modal'
+                                                            href=../controlador/hu1_controlador_diariomural/hu1_eliminar_diariomural.php?id=".$formulario_id."><i
+                                                                class='fa-solid fa-trash'></i></a>";
 
 
-                                                <a class="btn btn-primary" data-bs-toggle="modal"
-                                                    href="../controlador/hu1_controlador_diariomural/hu1_eliminar_diariomural.php?id=<?php echo $formulario_id?>"><i
-                                                        class="fa-solid fa-trash"></i></a>
+                                                        }else{
 
+                                                            echo "<button type='button' class='btn btn-secondary mx-1' data-toggle='modal'
+                                                            data-target='#modificar_publicacion".$formulario_id."'disabled>
+                                                            <i class='fa-solid fa-book'></i></button>";
 
+                                            
+                                                    echo "<a class='btn btn-secondary disabled' data-bs-toggle='modal'
+                                                        href=../controlador/hu1_controlador_diariomural/hu1_eliminar_diariomural.php?id=".$formulario_id."><i
+                                                            class='fa-solid fa-trash'></i></a>";
+
+                                                        }
+                                                ?>
                                             </div>
                                         </td>
                                     </tr>
@@ -233,8 +254,9 @@
         integrity="sha512-6PM0qYu5KExuNcKt5bURAoT6KCThUmHRewN3zUFNaoI6Di7XJPTMoT6K0nsagZKk2OB4L7E3q1uQKHNHd4stIQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <!-- Limpiar modal crear anuncio -->
-    <script>
-    $(function() {
+
+    <script type="text/javascript">
+    $(function(e) {
 
         const $ventanaPublicarDiariomural = $('#publicar_diariomural');
         const $botonCerrar = $('#cerrarModalDiariomural');
@@ -272,7 +294,6 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
     </script>
-
 
 </body>
 

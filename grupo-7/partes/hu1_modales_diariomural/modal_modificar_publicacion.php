@@ -23,16 +23,12 @@
                         <div class="form-group col-lg-10 col-md-10">
 
                             <label>Tipo de anuncio</label>
-                            <select class="form form-control is-invalid" name="tipo_anuncio" required>
-                                <option selected disabled value="">Seleccione uno...</option>
+                            <select class="form form-control" name="tipo_anuncio" required>
                                 <option value="Información">Información</option>
                                 <option value="Publicidad">Publicidad</option>
                                 <option value="Recomendaciones">Recomendaciones</option>
                                 <option value="Otro">Otro</option>
                             </select>
-                            <div class="valid-feedback">
-                                Aceptado.
-                            </div>
                         </div>
                         <!-- boton destacar  -->
                         <div class="form-group col-lg-2 col-md-2">
@@ -48,11 +44,9 @@
                         <label>Titulo</label>
                         <input type="text"
                             placeholder="Por favor, elija un titulo para su publicación (5 - 50 caracteres)"
-                            class="form-control is-invalid" name="titulo_actualizar" autocomplete="off" minlength="10"
+                            class="form-control" name="titulo_actualizar" autocomplete="off" minlength="10"
                             maxlength="50" value="<?php echo $formulario_titulo?>" required>
-                        <div class="valid-feedback">
-                            Aceptado.
-                        </div>
+
                     </div>
                     <div class="form-group">
                         <label>Descripción</label>
@@ -60,10 +54,6 @@
                             placeholder="Por favor, escriba una descripción para su publicación (10 - 1000 caracteres)"
                             rows="10" wrap="hard" class="form-control" name="descripcion_actualizar" minlength="10"
                             maxlength="1000" required><?php echo $formulario_contenido?></textarea>
-
-                        <div class="valid-feedback">
-                            Aceptado.
-                        </div>
 
                     </div>
 

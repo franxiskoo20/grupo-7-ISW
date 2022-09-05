@@ -14,7 +14,8 @@
 
                 <form class="was-validated"
                     action="../controlador/hu1_controlador_diariomural/hu1_publicar_diariomural.php"
-                    name="formulario_publicar" id="formulario_publicar" method="POST" onsubmit="return validar_formulario_publicar()">
+                    name="formulario_publicar" id="formulario_publicar" method="POST"
+                    onsubmit="return validar_formulario_publicar()">
                     <div class="row">
                         <div class="form-group col-lg-10 col-md-10">
 
@@ -36,9 +37,10 @@
                         <div class="form-group col-lg-2 col-md-2">
                             <label>Destacar</label>
                             <div class="form-check form-switch form-switch-md">
-                                <input class="form-check-input" type="checkbox" role="switch" name="destacar_anuncio"
-                                    id="destacar_anuncio">
+                                <input class="form-check-input" type="checkbox" role="switch"
+                                    name="destacar_anuncio" id="destacar_anuncio">
                             </div>
+
                         </div>
                     </div>
 
@@ -91,4 +93,3 @@
         </div>
     </div>
 </div>
-
