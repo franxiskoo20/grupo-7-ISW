@@ -1,9 +1,9 @@
 <?php
-
+require_once("../../bds/conexion.php");
 if (isset($_SESSION['id'])) {
     $usuario_idd = $_SESSION['id'];
     }
-require_once("../../bds/conexion.php");
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     /* Información enviada por el formulario */
     $tipo = $_POST['tipo'];
