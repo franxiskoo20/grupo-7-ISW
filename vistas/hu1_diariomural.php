@@ -99,6 +99,8 @@ function borrarErrores(){
 
                 <!-- ALERTAS  -->
 
+                <!-- ALERTAS  -->
+
                 <!-- ICONO DE ALERTA BOOTSTRAP  -->
                 <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
                     <symbol id="check-circle-fill" fill="currentColor" viewBox="0 0 16 16">
@@ -130,15 +132,15 @@ function borrarErrores(){
 
                     <!-- ALERTA BOOTSTRAP  -->
                     <?php }else{if(isset($_SESSION['ingresado'])){
-                            echo "<div class='alert alert-success d-flex justify-content-center align-items-center alert-dismissible fade show' role='alert' my-0>
+                            echo "<div class='alert alert-success d-flex justify-content-center align-items-center alert-dismissible fade show my-0' role='alert'>
                              <svg class='bi flex-shrink-0 me-2' width='24' height='24' role='img' aria-label='Success:'>
                              <use xlink:href='#check-circle-fill'/></svg>
-                            <div class='text-center'>Aviso ingresado exitosamente</div>
+                            <div class='text-center my-0'>Aviso ingresado exitosamente</div>
                             <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
                             </div>";
                             
                             }else{if(isset($_SESSION['modificado'])){
-                                echo "<div class='alert alert-success d-flex justify-content-center align-items-center alert-dismissible fade show' role='alert' my-0>
+                                echo "<div class='alert alert-info d-flex justify-content-center align-items-center alert-dismissible fade show my-0' role='alert'>
                                 <svg class='bi flex-shrink-0 me-2' width='24' height='24' role='img' aria-label='Success:'>
                                 <use xlink:href='#check-circle-fill'/></svg>
                                <div class='text-center'>Aviso modificado exitosamente</div>
