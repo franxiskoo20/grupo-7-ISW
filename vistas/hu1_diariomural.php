@@ -33,6 +33,10 @@ function borrarErrores(){
 		$_SESSION['modificado'] = null;
 		$borrado = true;
 	}
+    if(isset($_SESSION['borrar_historial'])){
+		$_SESSION['borrar_historial'] = null;
+		$borrado = true;
+	}
 	
 	return $borrado;
 }
@@ -99,8 +103,6 @@ function borrarErrores(){
 
                 <!-- ALERTAS  -->
 
-                <!-- ALERTAS  -->
-
                 <!-- ICONO DE ALERTA BOOTSTRAP  -->
                 <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
                     <symbol id="check-circle-fill" fill="currentColor" viewBox="0 0 16 16">
@@ -139,7 +141,7 @@ function borrarErrores(){
                             <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
                             </div>";
                             
-                            }else{if(isset($_SESSION['modificado'])){
+                            }elseif(isset($_SESSION['modificado'])){
                                 echo "<div class='alert alert-info d-flex justify-content-center align-items-center alert-dismissible fade show my-0' role='alert'>
                                 <svg class='bi flex-shrink-0 me-2' width='24' height='24' role='img' aria-label='Success:'>
                                 <use xlink:href='#check-circle-fill'/></svg>
@@ -147,7 +149,15 @@ function borrarErrores(){
                                <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
                                </div>";
 
-                            }}} ?>
+                            }elseif(isset($_SESSION['borrar_historial'])){
+                                echo "<div class='alert alert-danger d-flex justify-content-center align-items-center alert-dismissible fade show my-0' role='alert'>
+                                <svg class='bi flex-shrink-0 me-2' width='24' height='24' role='img' aria-label='Success:'>
+                                <use xlink:href='#check-circle-fill'/></svg>
+                               <div class='text-center'>Historial borrado exitosamente</div>
+                               <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+                               </div>";
+
+                            }}?>
                     <?php borrarErrores(); ?>
 
                 </div>
@@ -165,25 +175,28 @@ function borrarErrores(){
                                 <div class="col-lg-3 col-md-3">
                                     <label for="filtrar_anuncios"><b style='font-weight: bold'>Filtrar
                                             anuncios:</b></label>
-                                    <select class="form-control" name="filtrar_anuncios" id="filtrar_anuncios">
-                                        <option value="Mis anuncios"
-                                            <?php echo ($filtrar_anuncios_opcion == 'Mis anuncios')?'selected':''; ?>>
-                                            Mis anuncios</option>
-                                        <option value="Todos"
-                                            <?php echo ($filtrar_anuncios_opcion == 'Todos')?'selected':''; ?>>Todos
-                                        </option>
-                                    </select>
+
+                                    <div class="d-flex align-items-center">
+                                        <select class="form-control" name="filtrar_anuncios" id="filtrar_anuncios">
+                                            <option value="Mis anuncios"
+                                                <?php echo ($filtrar_anuncios_opcion == 'Mis anuncios')?'selected':''; ?>>
+                                                Mis anuncios</option>
+                                            <option value="Todos"
+                                                <?php echo ($filtrar_anuncios_opcion == 'Todos')?'selected':''; ?>>Todos
+                                            </option>
+                                        </select>
+
+                                        <input type="hidden" class="form-control" name="usuario_clave_filtrar"
+                                            value=<?php echo $usuarioId?>>
+
+                                        <button type="submit" class="btn btn-primary mx-2"><i
+                                                class="fa-solid fa-filter"></i></button>
+
+
+                                    </div>
 
                                 </div>
                                 <!-- boton para filtrar -->
-                                <div class="col-lg-1 col-md-1 d-flex align-items-end px-1">
-
-                                    <input type="hidden" class="form-control" name="usuario_clave_filtrar"
-                                        value=<?php echo $usuarioId?>>
-
-                                    <button type="submit" class="btn btn-primary mx-0"><i
-                                            class="fa-solid fa-filter"></i></button>
-                                </div>
 
                                 <div class="col-lg-2 col-md-2">
                                     <div>
@@ -200,19 +213,21 @@ function borrarErrores(){
                                     </div>
 
                                 </div>
+
                                 <div class="col-lg-6 col-md-6">
 
-                                    <label for="simbologia"><b style='font-weight: bold;'>Simbologia:</b></label>
+                                    <label for="simbologia"><b style='font-weight: bold;'>Simbología:</b></label>
 
-                                    <div class="d-flex align-items-end">
-                                        <div>
-                                            <p><i class="fa-solid fa-star" style="color:#ffaa00;"></i>Destacar
-                                                anuncio</p>
-                                        </div>
-                                        <div class="mx-2">
-                                            <p><i class="fa-solid fa-pencil" style="color:#111B54;"></i>Anuncio
-                                                modificado</p>
-                                        </div>
+                                    <div class="my-1">
+
+                                        <span> <i class="fa-solid fa-star" style="color:#ffaa00;"></i>Destacar
+                                            anuncio</span>
+                                        <span>
+                                            <i class="fa-solid fa-pencil mx-2" style="color:#111B54;"></i>Anuncio modificado
+
+                                        </span>
+
+
 
                                     </div>
 
@@ -225,12 +240,8 @@ function borrarErrores(){
                         </form>
 
                     </div>
-
-
-
-
-
                 </section>
+
 
                 <!-- MOSTRAR DIARIO MURAL  -->
 
@@ -274,7 +285,7 @@ function borrarErrores(){
                                                 
                                             }else{
                                                 echo "<b style='font-weight: bold;'>".$usuario_nombre." ".$usuario_apellido."</b>";
-                                                echo $formulario_actualizar == '1'?'<i class="fa-solid fa-pencil" style="color:#111B54;"></i>':'';
+                                                echo $formulario_actualizar == '1'?'<i class="fa-solid fa-pencil mx-1" style="color:#111B54;"></i>':'';
                                                 echo "<br><small>"."N° departamento: ".$usuario_departamento."</small><br>";
                                                 echo "<small>".$usuario_correo."</small>";
 
@@ -438,7 +449,7 @@ function borrarErrores(){
 
     <!-- Sweet alert-->
     <script type="text/javascript" src="../js/alerta_agregar.js"></script>
-
+    <script type="text/javascript" src="../js/alerta_eliminar_historial.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
     </script>

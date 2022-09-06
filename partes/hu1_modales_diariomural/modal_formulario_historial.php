@@ -48,9 +48,10 @@
 
 
                 <form action="../controlador/hu1_controlador_diariomural/hu1_eliminar_historial_anuncio.php"
-                    name="borrar_historial_anuncios" id="borrar_historial_anuncios" method="POST">
+                    name="borrar_historial_anuncios" id="borrar_historial_anuncios" method="POST"
+                    onsubmit="return borrar_historial()">
 
-                    <div class="d-flex justify-content-center"> 
+                    <div class="d-flex justify-content-center">
 
                         <input type="hidden" class="form-control" name="id_borrar_historial"
                             value=<?php echo $_SESSION['id']?>>

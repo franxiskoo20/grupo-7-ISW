@@ -6,6 +6,7 @@
  }   
 
 //DATOS DE CONEXION A MYSQLI_CONNECT
+
 $db_host = "146.83.194.142";
 $db_user = "E7software";
 $db_pass = "E7software1128";

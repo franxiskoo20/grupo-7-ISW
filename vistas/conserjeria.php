@@ -109,7 +109,7 @@ function borrarErrores(){
                     </div>
 
                     <!-- ALERTA BOOTSTRAP  -->
-                    <?php }else{if(isset($_SESSION['ingresado'])){
+                    <?php }elseif(isset($_SESSION['ingresado'])){
                             echo "<div class='alert alert-success d-flex justify-content-center align-items-center alert-dismissible fade show my-0' role='alert'>
                              <svg class='bi flex-shrink-0 me-2' width='24' height='24' role='img' aria-label='Success:'>
                              <use xlink:href='#check-circle-fill'/></svg>
@@ -117,7 +117,7 @@ function borrarErrores(){
                             <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
                             </div>";
                             
-                            }else{if(isset($_SESSION['modificado'])){
+                            }elseif(isset($_SESSION['modificado'])){
                                 echo "<div class='alert alert-info d-flex justify-content-center align-items-center alert-dismissible fade show my-0' role='alert'>
                                 <svg class='bi flex-shrink-0 me-2' width='24' height='24' role='img' aria-label='Success:'>
                                 <use xlink:href='#check-circle-fill'/></svg>
@@ -125,7 +125,7 @@ function borrarErrores(){
                                <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
                                </div>";
 
-                            }}} ?>
+                            } ?>
                     <?php borrarErrores(); ?>
 
                 </div>
@@ -243,7 +243,7 @@ function borrarErrores(){
     <script src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js"></script>
     <!-- script para datatable modificado -->
 
-    //Envía el id y se muestra el registro por modal.
+    <!-- Envía el id y se muestra el registro por modal. -->
     <script>
     function fun(id) {
         var ruta = '../partes/hu4_conserjeria/hu4_modal_modificar.php?id=' + id;
