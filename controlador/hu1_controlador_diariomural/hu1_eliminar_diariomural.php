@@ -22,7 +22,8 @@
   $eliminarPublicacion_diariomural = $bd->prepare($eliminarPublicacion_diariomuralSql);
   $eliminarPublicacion_diariomural-> bindParam(':formulario_id', $formulario_id);
   $eliminarPublicacion_diariomural->execute();
-
+  $_SESSION['eliminado'] = "Eliminado";
+    
    }
 
   header("Location: ../../vistas/hu1_diariomural.php");

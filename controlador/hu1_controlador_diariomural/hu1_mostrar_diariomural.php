@@ -57,7 +57,7 @@ require_once('../bds/conexion.php');
         WHERE F.formulario_tipo <> 'Reclamo' and F.formulario_tipo <> 'Bitácora' and F.formulario_tipo <> 'Encomienda' and F.formulario_tipo <> 'Otro'
         ORDER BY
         F.formulario_destacar 
-        DESC";
+        DESC;";
 
                 
    

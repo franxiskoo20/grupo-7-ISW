@@ -37,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $publicar_diariomural->bindParam(':formulario_contenido', $descripcion);
         $publicar_diariomural->bindParam(':formulario_destacar', $destacar_anuncio);
         $publicar_diariomural->execute();
-
+        $_SESSION['ingresado'] = "Ingresado";
     }else{
         echo "error se ingreso campo vacio";
     }
