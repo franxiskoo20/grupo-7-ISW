@@ -1,6 +1,7 @@
 $(function(){
     $(document).ready(function() {
-        $('#table_id').DataTable({
+        $('#tabla_diariomural').DataTable({
+            "aaSorting": [],
             "drawCallback": function(settings) {
                 $('ul.pagination').addClass("pagination-sm");
             },
@@ -8,6 +9,7 @@ $(function(){
             "aoColumnDefs": [{
                 'bSortable': false,
                 'aTargets': [3, 4],
+           
             }],
             "language": {
                 "processing": "Procesando...",

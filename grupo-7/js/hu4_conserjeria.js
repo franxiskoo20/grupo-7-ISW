@@ -7,7 +7,7 @@ $(function(){
             "lengthMenu": [5, 10, 15, 20, 25],
             "aoColumnDefs": [{
                 'bSortable': false,
-                'aTargets': [7,7],
+                'aTargets': [5,5],
                 
             }],
             "language": {
@@ -37,3 +37,24 @@ $(function(){
     });
     
 });
+
+/* Funcion para confirmar modificación */
+function validar_formulario_modificar() {
+    event.preventDefault();
+    Swal.fire({
+        title: '¿Seguro de enviar el formulario?',
+        icon: 'question',
+        iconColor: '#a5dc86',
+        showCancelButton: true,
+        confirmButtonText: 'Si',
+        cancelButtonText: 'No',
+        confirmButtonColor: '#0d6efd',
+        cancelButtonColor: '#6e7881',
+    }).then((result) => {
+        if (result.value) {
+            document.formulario_modificar.submit();
+        }
+        return false;
+    })
+    return false;
+}

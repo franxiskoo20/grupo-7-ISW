@@ -1,4 +1,5 @@
-function validar_formulario_publicar() {
+
+function validar_formulario_reclamos() {
     event.preventDefault();
     Swal.fire({
         title: '¿Seguro de enviar el formulario?',
@@ -11,9 +12,12 @@ function validar_formulario_publicar() {
         cancelButtonColor: '#6e7881',
     }).then((result) => {
         if (result.value) {
-            document.formulario_publicar.submit();
+            document.formulario_reclamos.submit();
+            
         }
         return false;
     })
     return false;
 }
+
+

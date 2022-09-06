@@ -45,7 +45,7 @@ a:hover {
 }
 
 #content {
-    overflow-y: auto;
+    overflow-y: scroll;
     height: 100vh;
     padding-bottom: 5rem;
 }
@@ -75,15 +75,15 @@ a:hover {
   /* Agregado por nosotros */
 /* DIARIO MURAL  */
 
-  #btn_publicar_diario { 
+  #btn_de_agregar { 
   
-    background-color: #1b2d91;
+    background-color: var(--primary) ;
   
   }
   
-  #btn_publicar_diario:hover{
+  #btn_de_agregar:hover{
   
-    background-color: var(--primary);
+    background-color: #1b2d91;
   }
   
   .form-check-input {
