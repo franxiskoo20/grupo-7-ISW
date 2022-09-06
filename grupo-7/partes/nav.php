@@ -24,12 +24,10 @@ if (!isset($_SESSION['nombre'])) {
                         <?php echo $_SESSION['nombre']?>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="../perfil/"><i class="fas fa-user"></i> Mi perfil</a>
 
-                        <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="../login/cerrar.php"><i class="fas fa-sign-out-alt"></i> Cerrar
                             sesión</a>
-                    </div>
+
                 </li>
             </ul>
         </div>

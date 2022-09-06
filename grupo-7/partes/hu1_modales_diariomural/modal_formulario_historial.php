@@ -7,7 +7,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <!-- titulo -->
-                <h2 class="font-weight-bold mb-0">Historial anuncio</h2>
+                <h2 class="font-weight-bold mb-0 w-100 text-center">Historial anuncio</h2>
 
                 <button type="button" class="btn-close" id="cerrarHistorialAnuncio" data-bs-dismiss="modal"
                     aria-label="Close"></button>
@@ -50,7 +50,7 @@
                 <form action="../controlador/hu1_controlador_diariomural/hu1_eliminar_historial_anuncio.php"
                     name="borrar_historial_anuncios" id="borrar_historial_anuncios" method="POST">
 
-                    <div class="d-flex justify-content-center"> >
+                    <div class="d-flex justify-content-center"> 
 
                         <input type="hidden" class="form-control" name="id_borrar_historial"
                             value=<?php echo $_SESSION['id']?>>

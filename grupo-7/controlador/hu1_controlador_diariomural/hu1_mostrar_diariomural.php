@@ -16,6 +16,7 @@ require_once('../bds/conexion.php');
                 F.formulario_remitente_id,
                 F.formulario_destacar,
                 F.formulario_actualizar,
+                F.formulario_hora,
                 U.usuario_nombre,
                 U.usuario_apellido,
                 U.usuario_correo,
@@ -25,7 +26,7 @@ require_once('../bds/conexion.php');
                 formulario F
                 INNER JOIN usuario U ON U.usuario_id = F.formulario_remitente_id  
                 INNER JOIN usuario_vive V ON U.usuario_id = V.usuario_id and  U.usuario_id = '$usuario_filtrar'
-                WHERE F.formulario_tipo <> 'Reclamo'
+                WHERE F.formulario_tipo <> 'Reclamo' and F.formulario_tipo <> 'Bitácora' and F.formulario_tipo <> 'Encomienda' and F.formulario_tipo <> 'Otro'
                 ORDER BY
                 F.formulario_destacar 
                 DESC";
@@ -43,6 +44,7 @@ require_once('../bds/conexion.php');
          F.formulario_remitente_id,
          F.formulario_destacar,
          F.formulario_actualizar,
+         F.formulario_hora,
          U.usuario_nombre,
          U.usuario_apellido,
          U.usuario_correo,
@@ -52,7 +54,7 @@ require_once('../bds/conexion.php');
         formulario F
         INNER JOIN usuario U ON U.usuario_id = F.formulario_remitente_id
         INNER JOIN usuario_vive V ON U.usuario_id = V.usuario_id
-        WHERE F.formulario_tipo <> 'Reclamo'
+        WHERE F.formulario_tipo <> 'Reclamo' and F.formulario_tipo <> 'Bitácora' and F.formulario_tipo <> 'Encomienda' and F.formulario_tipo <> 'Otro'
         ORDER BY
         F.formulario_destacar 
         DESC";

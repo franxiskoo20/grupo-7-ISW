@@ -19,12 +19,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['destacar_anuncio_actualizar'])){
        
         $destacar_anuncio_actualizar = '1';
-
-        echo "entro 1";
         
     }else{
         $destacar_anuncio_actualizar = '0';
-        echo "entro 2";
+
     }
 
     if(isset($_POST['formulario_id_actualizar'])){

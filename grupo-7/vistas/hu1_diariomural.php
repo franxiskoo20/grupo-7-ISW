@@ -23,15 +23,15 @@
 
             <!-- Page Content -->
 
-            <div id="content" class="bg-grey w-100">
+            <div id="content" class="bg-light w-100">
 
                 <!-- APARTADO DEL TITULO DIARIO MURAL  -->
 
                 <section class="py-3">
-                    <div class="container shadow px-4 py-3 bg-grey rounded-3 ">
+                    <div class="container shadow px-4 py-3 bg-grey rounded-3">
                         <div class="row">
-                            <h1 class="font-weight-bold mb-0">¡Bienvenido al Diario mural! -
-                                <?php echo $_SESSION['nombre'] ?></h1><br>
+                            <h1 class="font-weight-bold mb-0">Bienvenido al Diario mural -
+                                <?php echo $_SESSION['nombre']?></h1><br>
                             <h5>Donde podrás compartir información que consideres importante para la comunidad y
                                 revisar todas las publicaciones existentes hasta el momento. </h5>
                             <hr>
@@ -40,12 +40,12 @@
                             <h6 class="text-center"><br>Si tienes la intención de agregar una publicación al diario
                                 mural te invitamos a presionar el siguiente botón.</h6>
                         </div>
-                        <div class="row">
+                        <div class="row d-flex justify-content-end">
                             <!-- botón que permite crear anuncio  -->
-                            <div class="d-flex justify-content-end">
+                            <div class="col-lg-2 col-md-2">
 
-                                <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                                    id="btn_publicar_diario" data-bs-target="#publicar_diariomural"><b><i
+                                <button type="button" class="btn btn-primary w-100" data-bs-toggle="modal"
+                                    id="btn_de_agregar" data-bs-target="#publicar_diariomural"><b><i
                                             class="fa fa-plus mx-1"></i>Publicar</b></button>
 
 
@@ -65,8 +65,8 @@
                             <div class="row">
 
                                 <!-- select del filtro  -->
-                                <div class="col-lg-3 col-md-2">
-                                    <label for="filtrar_anuncios"><b style='font-weight: bold;'>Filtrar
+                                <div class="col-lg-3 col-md-3">
+                                    <label for="filtrar_anuncios"><b style='font-weight: bold'>Filtrar
                                             anuncios:</b></label>
                                     <select class="form-control" name="filtrar_anuncios" id="filtrar_anuncios">
                                         <option value="Mis anuncios"
@@ -79,21 +79,21 @@
 
                                 </div>
                                 <!-- boton para filtrar -->
-                                <div class="col-lg-1 col-md-1 d-flex align-items-end">
+                                <div class="col-lg-1 col-md-1 d-flex align-items-end px-1">
 
                                     <input type="hidden" class="form-control" name="usuario_clave_filtrar"
                                         value=<?php echo $_SESSION['id']?>>
 
-                                    <button type="submit" class="btn btn-primary"><i
+                                    <button type="submit" class="btn btn-primary mx-0"><i
                                             class="fa-solid fa-filter"></i></button>
                                 </div>
 
-                                <div class="col-lg-8 col-md-9">
+                                <div class="col-lg-2 col-md-2">
                                     <div>
                                         <label for="formularo_historial"><b style='font-weight: bold;'>Historial de
                                                 anuncios:</b></label>
                                         <div class="d-flex align-items-end">
-                                            <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                            <button type="button" class="btn btn-primary w-100" data-bs-toggle="modal"
                                                 id="btn_formulario_historial" data-bs-target="#formulario_historial"><i
                                                     class="fa-solid fa-clipboard " style="color:#ffffff;"></i></button>
 
@@ -125,15 +125,15 @@
                 <section class="py-0 my-0">
                     <div class="container shadow px-4 py-3 bg-grey rounded-3">
                         <div class="row">
-                            <div class="col-lg-12 col-md-12 ">
+                            <div class="col-lg-12 col-md-12">
                                 <table class="table table-hover" name="tabla_diariomural" id="tabla_diariomural">
                                     <thead class="bg-primary">
                                         <tr style="color:white">
-                                            <th class="col-lg-3 col-md-2" scope="col">Nombre</th>
-                                            <th class="col-lg-2 col-md-1" scope="col">Tipo</th>
-                                            <th class="col-lg-2 col-md-1" scope="col">Fecha</th>
-                                            <th class="col-lg-4 col-md-6" scope="col">Descripción</th>
-                                            <th class="col-lg-1 col-md-2" scope="col">Opciónes</th>
+                                            <th class="col-lg-3 col-md-2 text-center" scope="col">Nombre</th>
+                                            <th class="col-lg-2 col-md-1 text-center" scope="col">Tipo</th>
+                                            <th class="col-lg-2 col-md-1 text-center" scope="col">Fecha</th>
+                                            <th class="col-lg-4 col-md-6 text-center" scope="col">Descripción</th>
+                                            <th class="col-lg-1 col-md-2 text-center" scope="col">Opciónes</th>
                                         </tr>
                                     </thead>
 
@@ -145,7 +145,7 @@
                                         extract($row); ?>
 
                                     <tr>
-                                        <td>
+                                        <td class="col text-center">
                                             <?php if($formulario_destacar =='1'){
                                                 echo "<b style='font-weight: bold;'>".$usuario_nombre." ".$usuario_apellido."</b><i class='fa-solid fa-star mx-1' style='color:#ffaa00;'></i>";
                                                 echo $formulario_actualizar == '1'?'<i class="fa-solid fa-pencil" style="color:#111B54;"></i>':'';
@@ -153,6 +153,7 @@
 
                                                 echo "<br><small>"."N° departamento: ".$usuario_departamento."</small><br>";
                                                 echo "<small>".$usuario_correo."</small>";
+                                                
                                             }else{
                                                 echo "<b style='font-weight: bold;'>".$usuario_nombre." ".$usuario_apellido."</b>";
                                                 echo $formulario_actualizar == '1'?'<i class="fa-solid fa-pencil" style="color:#111B54;"></i>':'';
@@ -178,10 +179,7 @@
 
                                                     echo '<span class="badge bg-warning text-white">Recomendaciones</span>';
                                                     
-                                                    }else if($formulario_tipo  =='Otro'){
-
-                                                    echo '<span class="badge bg-success text-white">Otro</span>';
-
+                                                  
                                                 }
                                            
                                             ?>
@@ -189,7 +187,8 @@
                                         </td>
 
                                         <td class="col text-center">
-                                            <?php echo "<b style='font-weight: bold;'>".$fecha_formateada."</b>"?></td>
+                                            <?php echo "<b style='font-weight: bold;'>".$fecha_formateada."</b><br>".$formulario_hora.""?>
+                                        </td>
 
                                         <td><?php echo "<p class='text-center my-0'><b style='font-weight: bold;'>".strtoupper($formulario_titulo)."</p></b>"?>
                                             <?php echo $formulario_contenido?></td>
@@ -206,26 +205,26 @@
                                      
                                                         echo "<button type='button' class='btn btn-primary mx-1'
                                                         data-toggle='modal'
-                                                        data-target='#modificar_publicacion".$formulario_id."'>
-                                                        <i class='fa-solid fa-book'></i></button>";
+                                                        data-target='#modificar_publicacion".$formulario_id."'><i
+                                                        class='fa-regular fa-pen-to-square'></i></button>";
     
 
                                                 echo "<a class='btn btn-primary' data-bs-toggle='modal'
                                                     href=../controlador/hu1_controlador_diariomural/hu1_eliminar_diariomural.php?id=".$formulario_id."><i
-                                                        class='fa-solid fa-trash'></i></a>";
+                                                    class='btn-del fa-solid fa-trash-can'></i></a>";
 
 
                                                 }else{
 
                                                 echo "<button type='button' class='btn btn-secondary mx-1'
                                                     data-toggle='modal'
-                                                    data-target='#modificar_publicacion".$formulario_id."' disabled>
-                                                    <i class='fa-solid fa-book'></i></button>";
+                                                    data-target='#modificar_publicacion".$formulario_id."'disabled><i
+                                                    class='fa-regular fa-pen-to-square'></i></button>";
 
 
                                                 echo "<a class='btn btn-secondary disabled' data-bs-toggle='modal'
                                                     href=../controlador/hu1_controlador_diariomural/hu1_eliminar_diariomural.php?id=".$formulario_id."><i
-                                                        class='fa-solid fa-trash'></i></a>";
+                                                    class='btn-del fa-solid fa-trash-can'></i></a>";
 
                                                 }
                                                 ?>
@@ -321,7 +320,6 @@
 
     <!-- Sweet alert-->
     <script type="text/javascript" src="../js/alerta_agregar.js"></script>
-    <script type="text/javascript" src="../js/alerta_modificar_diariomural.js"></script>
 
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
