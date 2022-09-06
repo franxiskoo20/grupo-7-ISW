@@ -13,7 +13,7 @@
   $eliminarHistorial_diariomural = $bd->prepare($eliminarHistorial_diariomuralSql);
   $eliminarHistorial_diariomural -> bindParam(':id_borrar_historial', $id_borrar_historial);
   $eliminarHistorial_diariomural -> execute();
-
+  $_SESSION['borrar_historial'] = "Borrar_historial";
    }
    
    header("Location: ../../vistas/hu1_diariomural.php");

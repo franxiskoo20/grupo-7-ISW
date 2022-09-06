@@ -13,7 +13,7 @@
 		
 		
 		if ($datos === FALSE) {
-			echo "no encontro nada";
+			echo "No se encontraron datos";
 			unset($usuario_id,$usuario_nombre,$usuario_apellido);
 			header('Location: ../inicio');
 		}elseif($sentencia->rowCount() == 1){

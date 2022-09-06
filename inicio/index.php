@@ -1,3 +1,12 @@
+<?php
+if(!isset($_SESSION)) 
+{session_start(); 
+}
+if (isset($_SESSION['nombre'])) {
+$usernameSesion = $_SESSION['nombre'];
+$usuarioTipo = $_SESSION['tipo'];
+}?>
+
 <!-- head -->
 <?php include('../partes/head.php') ?>
 <!-- fin head -->

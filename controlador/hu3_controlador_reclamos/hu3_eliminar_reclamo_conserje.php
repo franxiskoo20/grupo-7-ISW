@@ -15,6 +15,6 @@
 
    }
 
-  header("Location: ../../vistas/hu3_reclamos.php");
+  header("Location: ../../vistas/hu3_reclamos_conserje.php");
    
 ?>

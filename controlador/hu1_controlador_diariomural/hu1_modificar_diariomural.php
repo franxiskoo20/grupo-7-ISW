@@ -46,8 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         
         $publicar_diariomural->execute();
 
-        echo $formulario_id_actualizar;
-
+        $_SESSION['modificado'] = 'Modificado';
      }else{
         echo "error se ingreso campo vacio";
     }

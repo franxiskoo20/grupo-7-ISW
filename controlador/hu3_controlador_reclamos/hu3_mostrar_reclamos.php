@@ -11,4 +11,12 @@ $consulta_reclamos_conserje_sql = $bd->prepare("SELECT * FROM reclamos_conserje;
 $consulta_reclamos_conserje_sql->execute();
 $resultado_conserje = $consulta_reclamos_conserje_sql->fetchAll();
 
+
+
+$consulta_usuarios_sql = $bd->prepare("SELECT * FROM vista_usuario where id <> ?");
+$consulta_usuarios_sql->execute([$_SESSION['id']]);
+
+
+
+
 ?>
