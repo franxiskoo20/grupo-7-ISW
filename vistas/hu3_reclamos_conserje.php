@@ -59,7 +59,7 @@ header('Location: ../inicio');
                 <section class="py-3 bg-light">
                     <div class="container shadow px-4 py-3 bg-grey rounded-3">
                         <div class="row">
-                            <h1 class="font-weight-bold mb-0">¡Bienvenido al apartado de Reclamos! </h1><br>
+                            <h1 class="font-weight-bold mb-0">Bienvenido al apartado de Reclamos </h1><br>
                             <h5>Revisa la última información de la tabla de reclamos.</h5>
                             <hr>
                         </div>
@@ -236,7 +236,7 @@ header('Location: ../inicio');
                                                                          $usuario_apellido = $row['usuario_apellido'];
                                                                          $usuario_clave = $row['usuario_id'];                                                              
                                                                    ?>
-                                            <option value="<?php echo $usuario_clave; ?>">
+                                            <option value="<?php echo $usuario_clave ?>">
                                                 <?php echo $usuario_nombre." ".$usuario_apellido    ?>
                                             </option>
                                             <?php 

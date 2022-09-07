@@ -34,11 +34,6 @@ function borrarErrores(){
 
 <!-- fin diario mural -->
 
-<?php if(!isset($_SESSION['tipo'])){
-
- header('Location: ../inicio');
-}
-?>
 
 <body>
 
@@ -60,7 +55,7 @@ function borrarErrores(){
                 <section class="py-3 bg-light">
                     <div class="container shadow px-4 py-3 bg-grey rounded-3">
                         <div class="row">
-                            <h1 class="font-weight-bold mb-0">¡Bienvenido a Reclamos -
+                            <h1 class="font-weight-bold mb-0">Bienvenido a Reclamos -
                                 <?php echo$_SESSION['nombre'] ?></h1><br>
                             <h5>Revisa la última información de la tabla de reclamos.</h5>
                             <hr>
@@ -182,9 +177,6 @@ function borrarErrores(){
                                  
                                     </td>
 
-                                    <!-- boton de modificar y eleminar -->
-
-
                                 </tr>
                                 <?php endforeach; endif ?>
 
@@ -213,6 +205,7 @@ function borrarErrores(){
                             <form class="was-validated" method="POST" id="formulario_reclamos"
                                 name="formulario_reclamos" action="../partes/hu3_reclamos_vecinos/insertar.php"
                                 onsubmit="return validar_formulario_reclamos()">
+                             
                                 <div class="row">
                                     <?php $fecha = date("Y-m-d");?>
                                     <?php $mDate=new DateTime();?>
@@ -234,17 +227,17 @@ function borrarErrores(){
                                             name="formulario_destinatario_id" required>
                                             <option value="" disabled selected>Ingresa un Vecino.</option>
                                             <?php $getUsuarios= $con->query("SELECT * FROM usuario");
-                                                                        while($row = $consulta_usuarios_sql->fetch(PDO::FETCH_BOTH))
-                                                                        {
-                                                                         $usuario_nombre = $row['nombre'];
-                                                                         $usuario_apellido = $row['apellido'];
-                                                                         $usuario_clave = $row['id'];                                                              
-                                                                   ?>
-                                            <option value="<?php echo $usuario_clave; ?>">
-                                                <?php echo $usuario_nombre." ".$usuario_apellido    ?>
-                                            </option>
-                                            <?php 
-                                                                        }?>
+                                                   while($row = mysqli_fetch_array($getUsuarios))
+                                                   {
+                                                    $usuario_nombre = $row['usuario_nombre'];
+                                                    $usuario_apellido = $row['usuario_apellido'];
+                                                    $usuario_clave = $row['usuario_id'];                                                              
+                                              ?>
+                       <option value="<?php echo $usuario_clave ?>">
+                           <?php echo $usuario_nombre." ".$usuario_apellido ?>
+                       </option>
+                       <?php 
+                                                   }?>
                                         </select>
                                         <div class="valid-feedback">
                                             Aceptado.
