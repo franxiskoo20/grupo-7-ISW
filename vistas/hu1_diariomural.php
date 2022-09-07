@@ -256,7 +256,7 @@ function borrarErrores(){
                                             <th class="col-lg-2 col-md-1 text-center" scope="col">Tipo</th>
                                             <th class="col-lg-2 col-md-1 text-center" scope="col">Fecha</th>
                                             <th class="col-lg-4 col-md-6 text-center" scope="col">Descripción</th>
-                                            <th class="col-lg-1 col-md-2 text-center" scope="col">Opciónes</th>
+                                            <th class="col-lg-1 col-md-2 text-center" scope="col">Opciones</th>
                                         </tr>
                                     </thead>
 

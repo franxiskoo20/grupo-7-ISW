@@ -54,11 +54,11 @@ function borrarErrores(){
             <!-- Fin Navbar -->
 
             <!-- Page Content -->
-            <div id="content" class="bg-grey w-100">
+            <div id="content" class="bg-light w-100">
 
                 <!-- Button trigger modal -->
                 <section class="py-3 bg-light">
-                    <div class="container shadow px-4 py-3 bg-grey rounded-3 ">
+                    <div class="container shadow px-4 py-3 bg-grey rounded-3">
                         <div class="row">
                             <h1 class="font-weight-bold mb-0">¡Bienvenido a Reclamos -
                                 <?php echo$_SESSION['nombre'] ?></h1><br>
@@ -69,24 +69,8 @@ function borrarErrores(){
                             <h6 class="text-center">Si deseas enviar un reclamo formal, presiona el botón "Ingresar
                                 Reclamo". Recuerda, los reclamos
                                 son
-                                totalmente anónimos.</h6>
-
-
-                            <?php if(isset($_SESSION['ingresado'])): ?>
-                            <div class="alert alert-success" role="alert">
-                                <h5 class="text-center">Reclamo ingresado exitosamente!</h5>
-                            </div>
-                            <?php endif; ?>
-
-                            <?php if(isset($_SESSION['eliminado'])): ?>
-                            <div class="alert alert-primary" role="alert">
-                                <h5 class="text-center">Reclamo eliminado exitosamente!</h5>
-                            </div>
-                            <?php endif; ?>
-
-                            <?php borrarErrores(); ?>
-
-
+                                totalmente anónimos.
+                            </h6>
 
                         </div>
 
@@ -99,18 +83,63 @@ function borrarErrores(){
                     </div>
                 </section>
 
-                <section class="py-0 my-0">
-                    <div class="container">
+                <!-- ALERTAS  -->
+
+                <!-- ICONO DE ALERTA BOOTSTRAP  -->
+                <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+                    <symbol id="check-circle-fill" fill="currentColor" viewBox="0 0 16 16">
+                        <path
+                            d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
+                    </symbol>
+                    <symbol id="info-fill" fill="currentColor" viewBox="0 0 16 16">
+                        <path
+                            d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z" />
+                    </symbol>
+                    <symbol id="exclamation-triangle-fill" fill="currentColor" viewBox="0 0 16 16">
+                        <path
+                            d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+                    </symbol>
+                </svg>
+
+                <div class="container">
+
+                    <?php if(isset($_SESSION['eliminado'])){ ?>
+
+                    <div class="alert alert-danger d-flex align-items-center justify-content-center alert-dismissible fade show my-0"
+                        role="alert">
+                        <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:">
+                            <use xlink:href="#check-circle-fill" />
+                        </svg>
+                        <div class="text-center">Aviso eliminado exitosamente</div>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+
+                    <!-- ALERTA BOOTSTRAP  -->
+                    <?php }else{if(isset($_SESSION['ingresado'])){
+                            echo "<div class='alert alert-success d-flex justify-content-center align-items-center alert-dismissible fade show my-0' role='alert'>
+                             <svg class='bi flex-shrink-0 me-2' width='24' height='24' role='img' aria-label='Success:'>
+                             <use xlink:href='#check-circle-fill'/></svg>
+                            <div class='text-center my-0'>Aviso ingresado exitosamente</div>
+                            <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+                            </div>";
+                            }}?>
+                    <?php borrarErrores(); ?>
+
+                </div>
+
+
+                <section class="py-3">
+                    <div class="container shadow px-4 py-3 bg-grey rounded-3">
                         <!-- Listar tabla de avisos -->
                         <table class="table table-hover" id="table_reclamos">
                             <!-- Head Tabla -->
                             <thead>
                                 <tr class="bg-primary text-light">
-                                    <th scope="col-1">Destinatario</th>
-                                    <th scope="col">Residencia</th>
-                                    <th scope="col-1">Fecha</th>
-                                    <th scope="col-1">Descripción </th>
-                                    <th scope="col-1">Opciones </th>
+                                    <th scope="col-lg-3 col-md-2 text-center">Destinatario</th>
+                                    <th scope="col-lg-3 col-md-2 text-center">Residencia</th>
+                                    <th scope="col-lg-3 col-md-2 text-center">Fecha</th>
+                                    <th scope="col-lg-3 col-md-2 text-center">Descripción </th>
+                                    <th scope="col-lg-3 col-md-2 text-center">Opciones </th>
 
 
                                 </tr>
@@ -118,7 +147,7 @@ function borrarErrores(){
                             <tbody id="body">
                                 <?php if($consulta_reclamos_sql): foreach($resultado as $row): ?>
                                 <tr>
-                                    <td aling="center">
+                                    <td class="col text-center">
                                         <?php  echo "<b style='font-weight: bold;'>".$row['destinatario_nombre']." ".$row['destinatario_apellido']."</b><br>";?>
 
                                         <?php echo "<small>"."N° departamento: ".$row['destinatario_departamento']."</small>"?>
@@ -126,15 +155,15 @@ function borrarErrores(){
                                         <?php echo "<small>".$row['destinatario_correo']."</small>"?>
                                     </td>
 
-                                    <td><?php echo "Edificio: ".$row['destinatario_edificio']?>
+                                    <td class="col text-center"><?php echo "Edificio: ".$row['destinatario_edificio']?>
                                         <br>
                                         <?php echo "N° departamento:".$row['destinatario_departamento']?>
                                     </td>
-                                    <td><?php echo $row['formulario_fecha']." ".$row['formulario_hora']?></td>
+                                    <td class="col text-center"><?php echo $row['formulario_fecha']." ".$row['formulario_hora']?></td>
 
 
 
-                                    <td>
+                                    <td class="col text-center">
                                         <?php  echo "<b style='font-weight: bold;'>".$row['formulario_titulo']."</b><br>";?>
                                         <?php echo $row['formulario_contenido']?>
                                     </td>
@@ -142,12 +171,15 @@ function borrarErrores(){
 
                                     <?php $formulario_id = $row['reclamo_id']; ?>
                                     <td>
-
-
-                                        <a class="btn btn-primary " id="eliminar"
+                                    <div class="d-flex justify-content-center">
+                                        
+                                    <a class="btn btn-primary " id="eliminar"
                                             href="../controlador/hu3_controlador_reclamos/hu3_eliminar_reclamo.php?id=<?= $formulario_id?>"><i
                                                 class="btn-del fa-solid fa-trash-can"></i>
                                         </a>
+                                    </div>
+
+                                 
                                     </td>
 
                                     <!-- boton de modificar y eleminar -->
@@ -290,6 +322,13 @@ function borrarErrores(){
                 integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk"
                 crossorigin="anonymous">
             </script>
+
+
+
+    <!-- bostrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js"
+        integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK" crossorigin="anonymous">
+    </script>
 
 
             <!-- Font awesome -->
