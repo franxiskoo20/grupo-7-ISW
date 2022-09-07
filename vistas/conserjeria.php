@@ -54,12 +54,13 @@ function borrarErrores(){
                             <hr>
                         </div>
                         <div class="row d-flex  text-center">
+                        <?php if ($usuarioTipo == 'Conserje') {?>
                             <div class="col">
                                 <h7>Si tienes la intención de agregar una publicación al diario mural te invitamos a
                                     presionar el siguiente botón.</h7>
                             </div>
 
-                            <?php if ($usuarioTipo == 'Conserje') {?>
+                      
                             <div class="row d-flex justify-content-end">
 
                                 <div class="col-lg-2 col-md-2">

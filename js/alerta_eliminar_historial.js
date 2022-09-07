@@ -6,8 +6,8 @@ function borrar_historial() {
         showCancelButton: true,
         confirmButtonText: 'Si',
         cancelButtonText: 'No',
-        confirmButtonColor: '#0d6efd',
-        cancelButtonColor: '#6e7881',
+        confirmButtonColor: '#111B54',
+        cancelButtonColor: '#FF0000',
     }).then((result) => {
         if (result.value) {
             document.borrar_historial_anuncios.submit();
